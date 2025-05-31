@@ -1,0 +1,5 @@
+* [F-31/05/2025]: Changelog.txt:
+    - aggiunto nuovo file Changelog per tracciare le modifiche
+
+* [F-31/05/2025]: first commit:
+    - aggiunto il nuovo progetto
