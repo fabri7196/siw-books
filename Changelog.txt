@@ -1,3 +1,8 @@
+* [F-01/06/2025]: application.properties:
+    - configurato il database di default (books)
+    - web server
+    - configurazione thymeleaf
+
 * [F-31/05/2025]: Changelog.txt:
     - aggiunto nuovo file Changelog per tracciare le modifiche
 
