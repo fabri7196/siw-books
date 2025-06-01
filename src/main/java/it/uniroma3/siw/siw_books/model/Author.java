@@ -1,0 +1,77 @@
+package it.uniroma3.siw.siw_books.model;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+
+@Entity
+@SequenceGenerator(initialValue = 1, allocationSize = 1, name = "seq_idAuthor", sequenceName = "seq_idAuthor")
+public class Author {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_idAuthor")
+    private Long id;
+    private String name;
+    private String surname;
+    private LocalDate dateOfBirth;
+    @Column(nullable = true)
+    private LocalDate dateOfDeath;
+    private String nationality;
+    private String photo;
+    
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getSurname() {
+        return surname;
+    }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+    
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    
+    public LocalDate getDateOfDeath() {
+        return dateOfDeath;
+    }
+    public void setDateOfDeath(LocalDate dateOfDeath) {
+        this.dateOfDeath = dateOfDeath;
+    }
+    
+    public String getNationality() {
+        return nationality;
+    }
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+    
+    public String getPhoto() {
+        return photo;
+    }
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    
+}

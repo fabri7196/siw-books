@@ -1,3 +1,10 @@
+* [F-01/06/2025]: Author.java, AuthorRepository.java, AuthorController.java, AuthorService.java:
+    - Creata Author.java e definiti i primi attributi base, resa persistente (NON ANCORA TERMINATA:
+    mancanti equals, hashcode e alcuni attributi)
+    - Creata AuthorController.java per la gestione delle richieste al server
+    - Creata AuthorService.java per i servizi
+    - Creata AuthorRepository.java per gestire le operazioni CRUD
+
 * [F-01/06/2025]: Book.java, BookRepository.java, BookController.java, BookService.java:
     - Creata Book.java e definiti i primi attributi base, resa persistente (NON ANCORA TERMINATA:
     mancanti equals, hashcode e alcuni attributi)
