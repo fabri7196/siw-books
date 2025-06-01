@@ -1,3 +1,10 @@
+* [F-01/06/2025]: Book.java, Author.java:
+    - In Book.java resi obbligatori gli attributi(title, year_pubblication e urlImage), creata 
+    associazione bidirezionale (N a N) con gli autori, mappata con attributo in Author.java, 
+    generati get e set.
+    - In Author.java resi obbligatori gli attributi(name, surname, dateOfBirth, nationality e photo), 
+    creata associazione bidirezionale (N a N) con i libri, generati get e set.
+
 * [F-01/06/2025]: Author.java, AuthorRepository.java, AuthorController.java, AuthorService.java:
     - Creata Author.java e definiti i primi attributi base, resa persistente (NON ANCORA TERMINATA:
     mancanti equals, hashcode e alcuni attributi)

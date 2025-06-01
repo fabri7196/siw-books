@@ -1,12 +1,14 @@
 package it.uniroma3.siw.siw_books.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -16,13 +18,19 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_idAuthor")
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String surname;
+    @Column(nullable = false)
     private LocalDate dateOfBirth;
-    @Column(nullable = true)
     private LocalDate dateOfDeath;
+    @Column(nullable = false)
     private String nationality;
+    @Column(nullable = false)
     private String photo;
+    @ManyToMany
+    private List<Book> books;
     
     public Long getId() {
         return id;
@@ -72,6 +80,12 @@ public class Author {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
     
+    public List<Book> getBooks() {
+        return books;
+    }
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
 }
