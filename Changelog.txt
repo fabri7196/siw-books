@@ -1,3 +1,7 @@
+* [F-02/06/2025]: application.properties, messages.properties:
+    - Configurazione messaggi errore in application.properties
+    - Predisposto nuovo file messages.properties per uso futuro
+
 * [F-01/06/2025]: Reviw.java:
     - Introdotta nuova Entità per le recensioni (DA TERMINARE), con i vari momentanei attributi, 
     get e set.
