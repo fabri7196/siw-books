@@ -18,17 +18,24 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_idAuthor")
     private Long id;
+    
     @Column(nullable = false)
     private String name;
+   
     @Column(nullable = false)
     private String surname;
+   
     @Column(nullable = false)
     private LocalDate dateOfBirth;
+    
     private LocalDate dateOfDeath;
+    
     @Column(nullable = false)
     private String nationality;
+    
     @Column(nullable = false)
     private String photo;
+    
     @ManyToMany
     private List<Book> books;
     

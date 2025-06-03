@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -18,14 +19,21 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_idBook")
     private Long id;
+    
     @Column(nullable = false)
     private String title;
+    
     @Column(nullable = false)
     private Year year_pubblication;
+    
     @Column(nullable = false)
     private List<String> urlImages;
+    
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
+
+    @OneToMany
+    private List<Review> reviews;
 
     public Long getId() {
         return id;
@@ -60,6 +68,13 @@ public class Book {
     }
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
+    }
+    
+    public List<Review> getReviews() {
+        return reviews;
+    } 
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
     
 }

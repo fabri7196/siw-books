@@ -1,3 +1,10 @@
+* [F-03/06/2025]: Book.java, Author.java, Review.java:
+    - Indentazione per gli attributi di tutte le classi
+    - Associazione 1 to N tra Book.java e Review.java, generati get e set
+    - Aggiunto vincolo sulla lunghezza del text di una Review a 1000 caratteri, aggiunta associazione
+    1 to 1 con Book.java, generati get e set, aggiunta per il campo vote annotazioni per validazione 
+    di valori compresi tra 1 e 5
+
 * [F-02/06/2025]: application.properties, messages.properties:
     - Configurazione messaggi errore in application.properties
     - Predisposto nuovo file messages.properties per uso futuro
