@@ -1,3 +1,6 @@
+* [F-03/06/2025]: ReviewController.java, ReviewService.java, ReviewRepository.java:
+    - Introdotte classi da completare
+
 * [F-03/06/2025]: Book.java, Author.java, Review.java:
     - Indentazione per gli attributi di tutte le classi
     - Associazione 1 to N tra Book.java e Review.java, generati get e set
