@@ -1,3 +1,8 @@
+* [F-03/06/2025]: commons.css, background_image.jpeg, index.html:
+    - Aggiunto file .css per la gestione dell'immagine in background
+    - Aggiunta immagine
+    - Modificato index.html per l'inserimento dell'immagine in backgroud
+
 * [F-03/06/2025]: ReviewController.java, ReviewService.java, ReviewRepository.java:
     - Introdotte classi da completare
 
