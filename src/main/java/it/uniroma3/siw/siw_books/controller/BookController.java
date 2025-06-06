@@ -13,7 +13,12 @@ public class BookController {
     
     @GetMapping("/")
     public String getHome() {
-        return "index.html";
+        return "home.html";
+    }
+
+    @GetMapping("/about")
+    public String getAbout() {
+        return "about.html";
     }
     
 }

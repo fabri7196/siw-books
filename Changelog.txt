@@ -1,4 +1,11 @@
-* [F-03/06/2025]: commons.css, background_image.jpeg, index.html:
+* [G/F-05/06/2025]: Changelog.txt, BookController.java, common.css, about.html, home.html, footer.html e header.html:
+    - Aggiunti i frammenti header e footer
+    - Sostituita pagina index.html con home.html
+    - Aggiunta pagina about.html
+    - Aggiunto bootstrap (usati classi row, col, flex e card)
+    - Aggiunto endpoint /about
+
+* [F-05/06/2025]: commons.css, background_image.jpeg, index.html:
     - Aggiunto file .css per la gestione dell'immagine in background
     - Aggiunta immagine
     - Modificato index.html per l'inserimento dell'immagine in backgroud
