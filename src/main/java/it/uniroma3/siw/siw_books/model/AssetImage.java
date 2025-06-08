@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -21,9 +20,6 @@ public class AssetImage {
 
     @Column(length = 200)
     private String description;
-
-    @OneToOne
-    private Book book;
 
     public Long getId() {
         return id;
@@ -46,11 +42,4 @@ public class AssetImage {
         this.description = description;
     }
    
-    public Book getBook() {
-        return book;
-    }
-    public void setBook(Book book) {
-        this.book = book;
-    }
-    
 }

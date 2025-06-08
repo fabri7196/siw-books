@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -33,8 +34,8 @@ public class Author {
     @Column(nullable = false)
     private String nationality;
     
-    @Column(nullable = false)
-    private String photo;
+    @OneToOne
+    private AssetImage photo;
     
     @ManyToMany
     private List<Book> books;
@@ -81,10 +82,10 @@ public class Author {
         this.nationality = nationality;
     }
     
-    public String getPhoto() {
+    public AssetImage getPhoto() {
         return photo;
     }
-    public void setPhoto(String photo) {
+    public void setPhoto(AssetImage photo) {
         this.photo = photo;
     }
     

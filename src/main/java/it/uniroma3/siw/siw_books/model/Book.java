@@ -3,11 +3,13 @@ package it.uniroma3.siw.siw_books.model;
 import java.time.Year;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
@@ -35,7 +37,8 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "book_id")
     private List<AssetImage> covers;
 
     public Long getId() {
