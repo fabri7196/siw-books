@@ -1,4 +1,4 @@
-* [F-07/06/2025]: Cangelog.txt, import.sql BookController.java, BookService.java, about.html, formNewBook.java, home.html, footer.html, header.html: 
+* [F-08/06/2025]: Cangelog.txt, import.sql BookController.java, BookService.java, about.html, formNewBook.java, home.html, footer.html, header.html: 
     - Aggiunto file import.sql per un futuro riempimento del db
     - BookController.java: modificato metodo getHome() e inseriti metodi per gestione form
     - BookService.java: inserito metodo save per caricamento dei libri nel db

@@ -12,11 +12,15 @@ public class BookService {
     @Autowired BookRepository bookRepository;
 
     public Book getBookById(Long id) {
-        return bookRepository.findById(id).get();
+        return this.bookRepository.findById(id).get();
     }
 
     public Iterable<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return this.bookRepository.findAll();
+    }
+
+    public Book save(Book book) {
+        return this.bookRepository.save(book);
     }
     
 }
