@@ -1,3 +1,20 @@
+* [F-07/06/2025]: Cangelog.txt, import.sql BookController.java, BookService.java, about.html, formNewBook.java, home.html, footer.html, header.html: 
+    - Aggiunto file import.sql per un futuro riempimento del db
+    - BookController.java: modificato metodo getHome() e inseriti metodi per gestione form
+    - BookService.java: inserito metodo save per caricamento dei libri nel db
+    - about.html: piccola modifica sullo style e aggiunto bootstrap
+    - formNewBook.html: creata nuova vista per aggiungere un libro
+    - home.html: modificata la struttura per le card, ora vengono mostrate in base ai libri presenti nel db
+    - Migliorato style al footer
+    - Migliorato style alla navbar e introdotte alcune funzionalità, tra cui la possibilità di aggiungere un libro
+
+* [F-07/06/2025]: Changelog.txt, AssetImageController.java, AssetImageRepository.java, AssetImageService.java, AssetImage.java, Book.java, footer.html e header.html:
+    - Resa entità le immagini dei libri
+    - Implementati metodi controller, repository e service per l'immagine
+    - Associazione tra libro e immagine
+    - In Book.java aggiunta una chiave naturale code, generati get e set, hashcode e equals sulla chiave naturale
+    - Piccolo aggiornamento irrilevante dei due frammenti header.html e footer.html
+
 * [G/F-05/06/2025]: Changelog.txt, BookController.java, common.css, about.html, home.html, footer.html e header.html:
     - Aggiunti i frammenti header e footer
     - Sostituita pagina index.html con home.html

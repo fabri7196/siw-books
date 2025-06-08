@@ -19,6 +19,9 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_idBook")
     private Long id;
+
+    @Column(unique = true)
+    private Long code;
     
     @Column(nullable = false)
     private String title;
@@ -26,14 +29,14 @@ public class Book {
     @Column(nullable = false)
     private Year year_pubblication;
     
-    @Column(nullable = false)
-    private List<String> urlImages;
-    
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
 
-    @OneToMany
+    @OneToMany(mappedBy = "book")
     private List<Review> reviews;
+
+    @OneToMany(mappedBy = "book")
+    private List<AssetImage> covers;
 
     public Long getId() {
         return id;
@@ -56,13 +59,6 @@ public class Book {
         this.year_pubblication = year_pubblication;
     }
     
-    public List<String> getUrlImages() {
-        return urlImages;
-    }
-    public void setUrlImages(List<String> urlImages) {
-        this.urlImages = urlImages;
-    }
-    
     public List<Author> getAuthors() {
         return authors;
     }
@@ -75,6 +71,45 @@ public class Book {
     } 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+    
+    public List<AssetImage> getCovers() {
+        return covers;
+    }
+    public void setCovers(List<AssetImage> covers) {
+        this.covers = covers;
+    }
+    
+    public Long getCode() {
+        return code;
+    }
+    public void setCode(Long code) {
+        this.code = code;
+    }
+   
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((code == null) ? 0 : code.hashCode());
+        return result;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Book other = (Book) obj;
+        if (code == null) {
+            if (other.code != null)
+                return false;
+        } else if (!code.equals(other.code))
+            return false;
+        return true;
     }
     
 }
