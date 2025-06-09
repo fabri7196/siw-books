@@ -1,3 +1,15 @@
+* [F-09/06/2025]: Changelog.txt, formRegisterUser.html, formLogin.html, BookController.java, header.html, AuthConfiguration.java,
+                AuthenticationController.java e CredentialsService.java
+    - Spostati file common.css e background_image.jpeg
+    - Introdotta form per registrare un utente
+    - Introdotta form per login
+    - BookController.java rimosso metodo path "/" per la home, spostato in AuthenticationController.java
+    - Piccoli aggiornamenti home.html,formNewBook.html e common.css, introdotto spring security
+    - header.html introdotti bottoni login e logout, visibili se autenticati o meno
+    - AuthConfiguration.java settaggi temporanei
+    - AuthenticationController.java modifiche relative al ritorno di viste
+    - CredentialsService.java Introdotto crittografia per le password, e resi metodi atomici(transazioni)
+
 * [F-09/06/2025]: Changelog.txt, pom.xml, BookService.java, AuthorService.java, ReviewService.java, User.java, Credentials.java, UserRepository.java, 
                 CredentialsRepository.java, UserService.java, CredentialsService.java, AuthConfiguration.java, AuthenticationController.java e GlobalController.java
     - Aggiunta libreria Spring Security nel pom.xml

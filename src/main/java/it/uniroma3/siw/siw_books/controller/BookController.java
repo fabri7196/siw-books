@@ -15,12 +15,6 @@ public class BookController {
 
     @Autowired BookService bookService;
     
-    @GetMapping("/")
-    public String getHome(Model model) {
-        model.addAttribute("books", this.bookService.getAllBooks());
-        return "home.html";
-    }
-
     @GetMapping("/about")
     public String getAbout() {
         return "about.html";

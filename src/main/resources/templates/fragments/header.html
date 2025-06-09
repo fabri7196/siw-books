@@ -29,9 +29,19 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item" th:unless="${user}">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
                     </li>
+
+                    <!-- Mostra solo se l'utente È autenticato -->
+                    <li class="nav-item" th:if="${userDetails}">
+                        <form th:action="@{/logout}" method="POST">
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li> -->
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Ricerca" aria-label="Search" />
