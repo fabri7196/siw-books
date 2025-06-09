@@ -1,3 +1,21 @@
+* [F-09/06/2025]: Changelog.txt, pom.xml, BookService.java, AuthorService.java, ReviewService.java, User.java, Credentials.java, UserRepository.java, 
+                CredentialsRepository.java, UserService.java, CredentialsService.java, AuthConfiguration.java, AuthenticationController.java e GlobalController.java
+    - Aggiunta libreria Spring Security nel pom.xml
+    - BookService.java cambiato nome metodo save in saveBook, quindi cambiata anche la chiamata nel controller
+    - AuthorService.java aggiunto metodo save e pulizia codice
+    - ReviewService.java cambiato nome metodo save in saveBook, aggiunta annotazione @Repository mancante in ReviewRepository.java
+    - AssetImageService.java cambiato nome metodo save in saveImage
+    - Aggiunte due entità per la gestione degli utenti registrati, prima contente i dati di accesso, la seconda i dati dell'utente, Credentials.java e User.java
+    - Aggiunte repository e service per User e Credentials
+    - Aggiunte AuthConfiguration.java, AuthenticationController.java e GlobalController.java per la gestione del login, logout, crittografia password, gestione ruolo per accesso a determinate risorse
+
+* [F-08/06/2025]: Changelog.txt, AssetImage.java, Author.java, Book.java, AssetImageService.java, ReviewService.java: 
+    - Modificata AssetImage.java, rimossa l'associazione verso il libro
+    - Aggiunta associazione con AssetImage.java per la photo
+    - Modificata associazione con AssetImage.java, introdotto cascade sul remove, se viene cancellato il libro anche le relative foto 
+    - AssetImageService.java aggiunto metodo save
+    - ReviewService.java aggiunto metodo save
+
 * [F-08/06/2025]: Cangelog.txt, import.sql BookController.java, BookService.java, about.html, formNewBook.java, home.html, footer.html, header.html: 
     - Aggiunto file import.sql per un futuro riempimento del db
     - BookController.java: modificato metodo getHome() e inseriti metodi per gestione form

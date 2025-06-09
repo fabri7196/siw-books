@@ -9,7 +9,8 @@ import it.uniroma3.siw.siw_books.repository.BookRepository;
 @Service
 public class BookService {
 
-    @Autowired BookRepository bookRepository;
+    @Autowired 
+    BookRepository bookRepository;
 
     public Book getBookById(Long id) {
         return this.bookRepository.findById(id).get();
@@ -19,7 +20,7 @@ public class BookService {
         return this.bookRepository.findAll();
     }
 
-    public Book save(Book book) {
+    public Book saveBook(Book book) {
         return this.bookRepository.save(book);
     }
     

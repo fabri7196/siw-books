@@ -12,7 +12,7 @@ public class AssetImageService {
     @Autowired
     private AssetImageRepository assetImageRepository;
     
-    public AssetImage save(AssetImage image) {
+    public AssetImage saveImage(AssetImage image) {
         return this.assetImageRepository.save(image);
     }
 }
