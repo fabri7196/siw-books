@@ -29,7 +29,7 @@ public class Book {
     private String title;
     
     @Column(nullable = false)
-    private Year year_pubblication;
+    private Year year_publication;
     
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
@@ -55,11 +55,11 @@ public class Book {
         this.title = title;
     }
     
-    public Year getYear_pubblication() {
-        return year_pubblication;
+    public Year getYear_publication() {
+        return year_publication;
     }
-    public void setYear_pubblication(Year year_pubblication) {
-        this.year_pubblication = year_pubblication;
+    public void setYear_publication(Year year_publication) {
+        this.year_publication = year_publication;
     }
     
     public List<Author> getAuthors() {

@@ -1,0 +1,15 @@
+insert into book (year_publication, code, id, title) values(2025, '2',2, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '3',3, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '4',4, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '5',5, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '6',6, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '7',7, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '8',8, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '9',9, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '10',10, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '11',11, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '12',12, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '13',13, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '14',14, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '15',15, 'prova');
+insert into book (year_publication, code, id, title) values(2025, '16',16, 'prova');
