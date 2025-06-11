@@ -18,7 +18,6 @@ public class AssetImage {
     @Column(nullable = false)
     private String path;
 
-    @Column(length = 200)
     private String description;
 
     public Long getId() {

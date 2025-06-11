@@ -1,5 +1,6 @@
 package it.uniroma3.siw.siw_books.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class User {
     private String surname;
 
     @NotBlank
+    @Column(unique = true)
     private String email;
 
     public String getName() {

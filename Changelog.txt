@@ -1,3 +1,16 @@
+* [F-11/06/2025] addedBook.html, BookController.java, Credentials.java, User.java
+    - Aggiunta vista per l'inserimento con successo di un libro
+    - Modificato il controller per i libri, inserimento autenticazione per la form dell'aggiunta libro e varie
+    - Aggiunti equals, hashcode e alcune annotazioni per la validazione dati in Credentials.java
+    - Aggiunta annotazione in User.java per la validazione dei dati
+
+* [F-11/06/2025] Changelog.txt, logo.jpg, import.sql, common.css, userProfile.html, book.java : 
+    - Introdotto nuovo logo
+    - Popolata entità Book su file import.sql
+    - Rimosso attributo di stile in common.css
+    - about.html rinominata in userProfile.html, pagina per la verifica dei dati dell'utente registrato
+    - Rinominato attributo in book.java e relativi metodi
+
 * [F-09/06/2025]: Changelog.txt, formRegisterUser.html, formLogin.html, BookController.java, header.html, AuthConfiguration.java,
                 AuthenticationController.java e CredentialsService.java
     - Spostati file common.css e background_image.jpeg

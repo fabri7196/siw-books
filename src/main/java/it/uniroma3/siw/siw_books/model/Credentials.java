@@ -1,12 +1,14 @@
 package it.uniroma3.siw.siw_books.model;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @SequenceGenerator(allocationSize = 1, initialValue = 2, sequenceName = "seq_credId", name = "seq_credId")
@@ -19,8 +21,11 @@ public class Credentials {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_credId")
     private Long id;
 
+    @NotBlank
+    @Column(unique = true)
     private String username;
     
+    @NotBlank
     private String password;
 
     private String role;
@@ -61,6 +66,31 @@ public class Credentials {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((username == null) ? 0 : username.hashCode());
+        return result;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Credentials other = (Credentials) obj;
+        if (username == null) {
+            if (other.username != null)
+                return false;
+        } else if (!username.equals(other.username))
+            return false;
+        return true;
     }
     
 }
