@@ -10,94 +10,29 @@
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="min-vh-100">
 
     <header th:replace="fragments/header :: header"></header>
 
-    <div class="row d-flex justify-content-start background-overlay py-4"; style="min-height: 100vh">
+    <div class="container-fluid background-overlay p-2" style="min-height: 39em;">
+        <div class="row d-flex justify-content-start g-0">
 
-        <div th:if="${books.isEmpty()}">Non ci sono Libri nel sistema</div>
+            <div th:if="${books.isEmpty()}">Non ci sono Libri nel sistema</div>
 
-        <div th:each="book : ${books}" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card h-50">
-                <img src="" class="card-img-top" alt="..." />
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${book.title}"></h5>
-                    <p class="card-text" th:text="${book.year_pubblication}"></p>
-                    <a href="" class="btn btn-primary">Recensioni</a>
+            <div th:each="book : ${books}" class="col-3 p-2">
+                <div class="card">
+                    <img src="" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${book.title}"></h5>
+                        <p class="card-text" th:text="${book.year_publication}"></p>
+                        <a href="" class="btn btn-primary">Recensioni</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     </div>
-
-    <!-- <div class="card col-3 mb-1">
-            <img src="https://dc8ccz5qcwwyb.cloudfront.net/media-development/29/93/726b00b3-ad83-4462-bd6f-a41ae179efe5/36b7cdc7-a968-4590-9ecc-718bf653f736.png"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of
-                    the
-                    card’s content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card col-3 mb-1">
-            <img src="https://dc8ccz5qcwwyb.cloudfront.net/media-development/29/93/726b00b3-ad83-4462-bd6f-a41ae179efe5/36b7cdc7-a968-4590-9ecc-718bf653f736.png"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of
-                    the
-                    card’s content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card col-3 mb-1">
-            <img src="https://dc8ccz5qcwwyb.cloudfront.net/media-development/29/93/726b00b3-ad83-4462-bd6f-a41ae179efe5/36b7cdc7-a968-4590-9ecc-718bf653f736.png"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of
-                    the
-                    card’s content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card col-3 mb-1">
-            <img src="https://dc8ccz5qcwwyb.cloudfront.net/media-development/29/93/726b00b3-ad83-4462-bd6f-a41ae179efe5/36b7cdc7-a968-4590-9ecc-718bf653f736.png"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of
-                    the
-                    card’s content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
-        <div class="card col-3 mb-1">
-            <img src="https://dc8ccz5qcwwyb.cloudfront.net/media-development/29/93/726b00b3-ad83-4462-bd6f-a41ae179efe5/36b7cdc7-a968-4590-9ecc-718bf653f736.png"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of
-                    the
-                    card’s content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div> -->
-    </div>
-
 
     <footer th:replace="fragments/footer :: footer"></footer>
 

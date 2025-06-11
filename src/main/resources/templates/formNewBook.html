@@ -8,13 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
-<body class="d-flex flex-column min-vh-100 bg-light">
+<body class="min-vh-100">
 
     <header th:replace="fragments/header :: header"></header>
-    <main class="flex-grow-1 d-flex align-items-center justify-content-center">
-        <div class="container mt-5">
+    
+        <div class="container mt-5" style="height: 36em;">
             <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
+                <div class="col-6">
                     <div class="card shadow-lg rounded-4">
                         <div class="card-body">
                             <h2 class="card-title text-center mb-4">Aggiungi Nuovo Libro</h2>
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="year" class="form-label">Anno di pubblicazione</label>
-                                    <input required type="text" class="form-control" id="year" th:field="${book.year_pubblication}" />
+                                    <input required type="text" class="form-control" id="year" th:field="${book.year_publication}" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="code" class="form-label">Codice</label>
@@ -45,7 +45,6 @@
                 </div>
             </div>
         </div>
-    </main>
 
     <footer th:replace="fragments/footer :: footer"></footer>
 
