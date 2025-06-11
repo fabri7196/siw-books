@@ -1,10 +1,22 @@
-* [F-11/06/2025] addedBook.html, BookController.java, Credentials.java, User.java
+* [F-11/06/2025]: AuthenticationController.java, formLogin.html e formRegisterUser.html: 
+    - Introdotto metodo getUserProfile e accesso autorizzato solo ad utenti registrati
+      modificato metodo getHome per rendere la barra della navbar attiva, "home" cambia colore quando mi trovo in quel path
+    - Pulizia codice formLogin.html, rimossa navbar e footer
+    - Pulizia codice formRegisterUser.html (RIMUOVERE NAVBAR E FOOTER)
+
+
+* [F-11/06/2025]: home.html, header.html e formNewBook.html
+    - Pulizia codice della home
+    - Modificata navbar e pulizia codice
+    - Pulizia codice nella form per l'aggiunta libri
+
+* [F-11/06/2025]: addedBook.html, BookController.java, Credentials.java, User.java:
     - Aggiunta vista per l'inserimento con successo di un libro
     - Modificato il controller per i libri, inserimento autenticazione per la form dell'aggiunta libro e varie
     - Aggiunti equals, hashcode e alcune annotazioni per la validazione dati in Credentials.java
     - Aggiunta annotazione in User.java per la validazione dei dati
 
-* [F-11/06/2025] Changelog.txt, logo.jpg, import.sql, common.css, userProfile.html, book.java : 
+* [F-11/06/2025]: Changelog.txt, logo.jpg, import.sql, common.css, userProfile.html, book.java : 
     - Introdotto nuovo logo
     - Popolata entità Book su file import.sql
     - Rimosso attributo di stile in common.css

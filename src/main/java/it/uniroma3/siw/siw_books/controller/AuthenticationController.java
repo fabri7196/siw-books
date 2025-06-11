@@ -46,6 +46,7 @@ public class AuthenticationController {
 
 	@GetMapping(value = "/") 
 	public String getHome(Model model) {
+        model.addAttribute("requestURI", "/");
         model.addAttribute("books", this.bookService.getAllBooks());
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication instanceof AnonymousAuthenticationToken) {
@@ -54,7 +55,7 @@ public class AuthenticationController {
 		else {		
 			UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-            model.addAttribute("user", credentials.getUsername());
+            model.addAttribute("user", credentials);
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 				return "admin/indexAdmin.html";
 			}
@@ -91,4 +92,12 @@ public class AuthenticationController {
         return "/";
     }
     
+    @GetMapping("/userProfile")
+    public String getUserProfile(Model model) {
+        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+        model.addAttribute("user", credentials);
+        model.addAttribute("requestURI", "/userProfile");
+        return "userProfile.html";
+    }
 }
