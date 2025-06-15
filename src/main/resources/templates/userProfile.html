@@ -11,26 +11,30 @@
 </head>
 
 <body>
-    <header th:replace="fragments/header :: header"></header>
+    <header th:replace="~{fragments/header :: header}"></header>
 
-    <main class="bg-light min-vh-100 d-flex align-items-center justify-content-center py-5 background-overlay">
-        <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
-            <div class="card-body text-center">
-                <h2 class="card-title mb-4" th:text="'Profilo di ' + ${user.user.name} + ' ' + ${user.user.surname}"></h2>
-                <ul class="list-group list-group-flush mb-4 text-start">
-                    <li class="list-group-item" th:text="'👤 Username: ' + ${userDetails.username}"></li>
-                    <li class="list-group-item" th:text="'🔑 Ruolo: ' + ${user.role}"></li>
-                    <li class="list-group-item" th:text="'📧 E-mail: ' + ${user.user.email}"></li>
-                </ul>
-                <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-primary">Modifica Password</a>
-                    <a href="#" class="btn btn-danger">Cancella Utente</a>
+    <div class="container-fluid background-overlay p-0">
+        <div class="row align-items-center justify-content-center min-vh-100 d-flex">
+            <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+                <div class="card-body text-center">
+                    <h2 class="card-title mb-4"
+                        th:text="'Profilo di ' + ${user.user.name} + ' ' + ${user.user.surname}"></h2>
+                    <ul class="list-group list-group-flush mb-4 text-start">
+                        <li class="list-group-item" th:text="'👤 Username: ' + ${userDetails.username}"></li>
+                        <li class="list-group-item" th:text="'🔑 Ruolo: ' + ${user.role}"></li>
+                        <li class="list-group-item" th:text="'📧 E-mail: ' + ${user.user.email}"></li>
+                    </ul>
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-primary">Modifica Password</a>
+                        <a href="#" class="btn btn-danger">Cancella Utente</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer th:replace="fragments/footer :: footer"></footer>
+
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"

@@ -1,11 +1,19 @@
-* [F-11/06/2025]: AuthenticationController.java, formLogin.html e formRegisterUser.html: 
+* [F-15/06/2025]: Changelog.txt, common.css, header.html, footer.html, userProfile.html, formNewBook.html
+                    formRegisterUser.html e formLogin.html :
+    - common.css settaggi per ottimizzare il layout
+    - header.html modificata navbar, aggiunta icona omino a destra per login, logout e profilo
+    - userProfile.html, footer.html, formNewBook.html settaggi per ottimizzare il layout
+    - formRegisterUser.html settaggi per ottimizzare layout, rimosso header e footer
+    - formLogin.html settaggi per ottimizzare layout, rimosso header e footer, aggiunto bottome per tornare alla homepage
+
+* [F-11/06/2025]: AuthenticationController.java, formLogin.html e formRegisterUser.html : 
     - Introdotto metodo getUserProfile e accesso autorizzato solo ad utenti registrati
       modificato metodo getHome per rendere la barra della navbar attiva, "home" cambia colore quando mi trovo in quel path
     - Pulizia codice formLogin.html, rimossa navbar e footer
     - Pulizia codice formRegisterUser.html (RIMUOVERE NAVBAR E FOOTER)
 
 
-* [F-11/06/2025]: home.html, header.html e formNewBook.html
+* [F-11/06/2025]: home.html, header.html e formNewBook.html :
     - Pulizia codice della home
     - Modificata navbar e pulizia codice
     - Pulizia codice nella form per l'aggiunta libri
