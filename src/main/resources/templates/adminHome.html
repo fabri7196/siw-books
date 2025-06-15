@@ -12,7 +12,7 @@
 
 <body>
 
-    <header th:replace="~{fragments/header :: header}"></header>
+    <header th:replace="~{fragments/adminHeader :: adminHeader}"></header>
 
     <div class="container-fluid background-overlay p-2 min-vh-100">
         <div class="row d-flex justify-content-start m-0">
@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <h5 class="card-title" th:text="${book.title}"></h5>
                         <p class="card-text" th:text="${book.year_publication}"></p>
-                        <a th:href="@{'/book' + ${book.id}}" class="btn btn-primary">Dettagli</a>
+                        <a th:href="@{'/book'+${book.id}}" class="btn btn-primary">Recensioni</a>
                     </div>
                 </div>
             </div>

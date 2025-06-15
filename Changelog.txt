@@ -1,3 +1,13 @@
+* [F-15/06/2025]: Changelog.txt, adminHome.html, adminHeader.html, AuthenticationController.java, AuthConfiguration.java, 
+            book.html, BookController.java e home.html :
+    - Aggiunta homepage e aggiunta navbar modificata (ulteriore funzionalità sugli utenti, DA IMPLEMENTARE) per gli utenti ADMIN
+    - AuthenticationController.java aggiornato getHome(), controlla se l'utente è admin e ritorna la vista della adminHome.html
+    - AuthConfiguration.java settaggio per il path '/book{id}' permesso a tutti gli utenti
+    - book.html nuova vista per informazioni dettagliate sui libri
+    - BookController.java aggiunto controllo per accedere alla pagina di aggiunta libro, se non sei autenticato ti ritorna il login,
+        introdotto metodo getBook per il ritorno della vista book.html
+    - home.html settaggi per ottimizzare il layout
+
 * [F-15/06/2025]: Changelog.txt, common.css, header.html, footer.html, userProfile.html, formNewBook.html
                     formRegisterUser.html e formLogin.html :
     - common.css settaggi per ottimizzare il layout

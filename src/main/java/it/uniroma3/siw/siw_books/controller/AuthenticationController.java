@@ -57,7 +57,7 @@ public class AuthenticationController {
 			Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
             model.addAttribute("user", credentials);
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-				return "admin/indexAdmin.html";
+				return "adminHome.html"; 
 			}
 		}
         return "home.html";
