@@ -1,4 +1,13 @@
-* [F-16/06/2025]: Changelog.txt, import.sql, 
+* [F-16/06/2025]: Changelog.txt, header.html, formRegisterUser.html, book.html, BookController.java e AuthenticationController.java :
+    - Miglioramento grafico header.html per i dropdown-item, aggiunto dropdown-menu per gli admin
+    - Aggiunto bottone home in formRegisterUser.html
+    - formLogin.html rimosse parte commentate
+    - book.html aggiunto bottone con icona pencil(Da implementare, aggiunta recensioni)
+    - addedBook.html modificati i richiami ai frammenti, per rimozione warning
+    - BookController.java modificati i metodi addBook, getBook per controlli se si è autenticati o meno
+    - AuthenticationController.java modificato metodo getHome, viene ritornata una vista unica per tutti
+
+* [F-16/06/2025]: Changelog.txt, import.sql : 
     - Rimossa adminHome.html e adminHeader.html, unificato il tutto per tutti gli utenti
     - import.sql settati per bene i parametri per inserimento libri
     - Rimossa in tutte le Entità il sequenceName nel @SequenceGenerator

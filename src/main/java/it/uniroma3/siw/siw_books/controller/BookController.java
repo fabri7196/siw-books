@@ -1,5 +1,9 @@
 package it.uniroma3.siw.siw_books.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,26 +21,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class BookController {
 
-    @Autowired 
+    @Autowired
     BookService bookService;
 
     @Autowired
-	private CredentialsService credentialsService;
-    
+    private CredentialsService credentialsService;
+
+    @Autowired
+    private GlobalController globalController;
+
     @GetMapping("/formNewBook")
     public String formNewBook(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication instanceof AnonymousAuthenticationToken) {
-	        return "login.html";
-		}
-        else {
-            UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		    Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+        if (authentication instanceof AnonymousAuthenticationToken) {
+            return "login.html";
+        } else {
+            UserDetails userDetails = globalController.getUser();
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
             model.addAttribute("user", credentials);
             model.addAttribute("book", new Book());
             return "formNewBook.html";
@@ -44,15 +51,25 @@ public class BookController {
     }
 
     @PostMapping("/addBook")
-    public String addBook(@ModelAttribute("book") Book book) {
+    public String addBook(@ModelAttribute("book") Book book, Model model) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+        }
         this.bookService.saveBook(book);
         return "addedBook.html";
     }
 
     @GetMapping("/book{id}")
     public String getBook(@PathVariable("id") Long id, Model model) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+        }
         model.addAttribute("book", this.bookService.getBookById(id));
         return "book.html";
     }
- 
+
 }

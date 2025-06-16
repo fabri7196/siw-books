@@ -15,63 +15,50 @@
     <header th:replace="~{fragments/header :: header}"></header>
 
     <div class="container-fluid justify-content-center align-items-center background-overlay min-vh-100 d-flex">
-        <!-- <div class="card col-6">
-                <div class="d-flex justify-content-center">
-                    <img src="" alt="Copertina" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title text-center" th:text="${book.title}"></h1>
-                    <p class="card-text mb-2" th:text="'Anno pubblicazione: ' + ${book.year_publication}"></p>
-                    <a href="">Immagini</a>
-                    <hr>
-                    <h4 class="mt-3">Recensioni</h4>
-                    <p th:if="${#lists.isEmpty(book.reviews)}">Nessuna recensione disponibile.</p> -->
-                    <!-- <p class="card-text" th:text="${book.reviews}"></p> -->
-                    <!-- <a href="" class="btn btn-primary">Recensioni</a> -->
-                <!-- </div>
-            </div> -->
-    <div class="card shadow-lg border-0 rounded-4 p-4">
-    <!-- Immagine copertina centrata -->
-    <div class="d-flex justify-content-center mb-3">
-        <img src="" alt="Copertina" class="rounded border border-2" 
-             style="width: 120px; height: 120px; object-fit: cover;">
-    </div>
+        <div class="card shadow-lg border-0 rounded-4 p-4">
+            <!-- Immagine copertina centrata -->
+            <div class="d-flex justify-content-center mb-3">
+                <img src="" alt="Copertina" class="rounded border border-2"
+                    style="width: 120px; height: 120px; object-fit: cover;">
+            </div>
 
-    <!-- Contenuto -->
-    <div class="card-body text-center">
-        <h2 class="card-title fw-bold mb-3" th:text="${book.title}">Titolo Libro</h2>
-        
-        <p class="text-muted mb-1" th:text="'Anno pubblicazione: ' + ${book.year_publication}">Anno</p>
-        <p class="text-muted mb-1" th:text="'Autori: '">Autori</p>
-        <p th:if="${#lists.isEmpty(book.reviews)}" class="text-muted fst-italic">
-            Nessun autore disponibile.
-        </p>
-        <a href="" class="text-decoration-none mb-1 d-block text-primary">📷 Immagini</a>
-        
-        <hr class="my-4">
+            <!-- Contenuto -->
+            <div class="card-body text-center">
+                <h2 class="card-title fw-bold mb-3" th:text="${book.title}">Titolo Libro</h2>
 
-        <!-- Sezione recensioni -->
-        <h4 class="mb-3">📝 Recensioni</h4>
+                <p class="text-muted mb-1" th:text="'Anno pubblicazione: ' + ${book.year_publication}">Anno pubblicazione</p>
+                <p class="text-muted mb-1" th:text="'Autori: '">Autori</p>
+                <p th:if="${#lists.isEmpty(book.reviews)}" class="text-muted fst-italic">
+                    Nessun autore disponibile.
+                </p>
+                <a href="" class="text-decoration-none mb-1 d-block text-primary">📷 Immagini</a>
 
-        <p th:if="${#lists.isEmpty(book.reviews)}" class="text-muted fst-italic">
-            Nessuna recensione disponibile.
-        </p>
+                <hr class="my-4">
 
-        <!-- Se vuoi elencare le recensioni, puoi aggiungere: -->
-        <!--
+                <!-- Sezione recensioni -->
+                <h4 class="mb-3">📝 Recensioni</h4>
+
+                <p th:if="${#lists.isEmpty(book.reviews)}" class="text-muted fst-italic">
+                    Nessuna recensione disponibile.
+                </p>
+
+                <!-- Se vuoi elencare le recensioni, puoi aggiungere: -->
+                <!--
         <ul class="list-group text-start" th:if="${!#lists.isEmpty(book.reviews)}">
             <li class="list-group-item" th:each="review : ${book.reviews}" th:text="${review.content}"></li>
         </ul>
         -->
-        <a href="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16" style="color:black">
-                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-            </svg>
-        </a>
-    </div>
-</div>
-
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-pencil" viewBox="0 0 16 16" style="color:black">
+                        <path
+                            d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                    </svg>
+                </a>
+            </div>
         </div>
+
+    </div>
     </div>
 
     <footer th:replace="~{fragments/footer :: footer}"></footer>
