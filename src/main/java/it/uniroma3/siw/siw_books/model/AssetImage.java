@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(initialValue = 1, allocationSize = 1, name = "seq_idImage", sequenceName = "seq_idImage")
+@SequenceGenerator(initialValue = 1, allocationSize = 1, name = "seq_idImage")
 public class AssetImage {
 
     @Id

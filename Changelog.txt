@@ -1,3 +1,8 @@
+* [F-16/06/2025]: Changelog.txt, import.sql, 
+    - Rimossa adminHome.html e adminHeader.html, unificato il tutto per tutti gli utenti
+    - import.sql settati per bene i parametri per inserimento libri
+    - Rimossa in tutte le Entità il sequenceName nel @SequenceGenerator
+
 * [F-15/06/2025]: Changelog.txt, adminHome.html, adminHeader.html, AuthenticationController.java, AuthConfiguration.java, 
             book.html, BookController.java e home.html :
     - Aggiunta homepage e aggiunta navbar modificata (ulteriore funzionalità sugli utenti, DA IMPLEMENTARE) per gli utenti ADMIN
@@ -21,7 +26,6 @@
       modificato metodo getHome per rendere la barra della navbar attiva, "home" cambia colore quando mi trovo in quel path
     - Pulizia codice formLogin.html, rimossa navbar e footer
     - Pulizia codice formRegisterUser.html (RIMUOVERE NAVBAR E FOOTER)
-
 
 * [F-11/06/2025]: home.html, header.html e formNewBook.html :
     - Pulizia codice della home

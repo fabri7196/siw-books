@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(initialValue = 1, name = "seq_idBook", allocationSize = 1, sequenceName = "seq_idBook")
+@SequenceGenerator(initialValue = 1, name = "seq_idBook", allocationSize = 1)
 public class Book {
 
     @Id

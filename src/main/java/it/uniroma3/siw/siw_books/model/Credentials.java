@@ -11,9 +11,9 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@SequenceGenerator(allocationSize = 1, initialValue = 2, sequenceName = "seq_credId", name = "seq_credId")
+@SequenceGenerator(allocationSize = 1, initialValue = 2, name = "seq_credId")
 public class Credentials {
-
+    
     public static final String DEFAULT_ROLE = "DEFAULT";
 	public static final String ADMIN_ROLE = "ADMIN";
 

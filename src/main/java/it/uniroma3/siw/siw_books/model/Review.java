@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
 @Entity
-@SequenceGenerator(allocationSize = 1, initialValue = 1, name = "seq_idReview", sequenceName = "seq_idReview")
+@SequenceGenerator(allocationSize = 1, initialValue = 1, name = "seq_idReview")
 public class Review {
 
     @Id

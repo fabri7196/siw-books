@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@SequenceGenerator(allocationSize = 1, initialValue = 1, sequenceName = "seq_userId", name = "seq_userId")
+@SequenceGenerator(allocationSize = 1, initialValue = 1, name = "seq_userId")
 @Table(name = "users")
 public class User {
 

@@ -13,7 +13,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(initialValue = 1, allocationSize = 1, name = "seq_idAuthor", sequenceName = "seq_idAuthor")
+@SequenceGenerator(initialValue = 1, allocationSize = 1, name = "seq_idAuthor")
 public class Author {
 
     @Id
