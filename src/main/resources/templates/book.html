@@ -43,12 +43,17 @@
                 </p>
 
                 <!-- Se vuoi elencare le recensioni, puoi aggiungere: -->
-                <!--
-        <ul class="list-group text-start" th:if="${!#lists.isEmpty(book.reviews)}">
-            <li class="list-group-item" th:each="review : ${book.reviews}" th:text="${review.content}"></li>
-        </ul>
-        -->
-                <a href="">
+
+                <ul class="list-group text-start" th:if="${!#lists.isEmpty(book.reviews)}">
+                    <li class="list-group-item" th:each="review : ${book.reviews}">
+                        <strong><span th:text="${review.title}"></span></strong><br/>
+                        <span th:text="${review.text}"></span><br />
+                        <strong>Voto:</strong> <span th:text="${review.vote}"></span><br/>
+                        <!-- <strong>Author:</strong> <span th:text="${review.author.name}"></span> -->
+                    </li>
+                </ul>
+
+                <a th:href="@{'/book/'+${book.id}+'/review'}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-pencil" viewBox="0 0 16 16" style="color:black">
                         <path

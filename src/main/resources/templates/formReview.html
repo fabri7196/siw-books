@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aggiungi Recensione</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .fa-star {
+            color: #ccc;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .fa-star.checked {
+            color: #ffc107;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header th:replace="~{fragments/header :: header}"></header>
+
+    <div class="container-fluid m-0 background-overlay min-vh-100">
+        <h2 class="mb-4">Aggiungi una Recensione</h2>
+        <form th:action="@{'/book/'+${book.id}+'/review/addReview'}" th:object="${review}" method="POST"
+            class="p-4 rounded bg-light shadow">
+            <div class="mb-3">
+                <label for="title" class="form-label">Titolo</label>
+                <input type="text" class="form-control" id="title" th:field="${review.title}" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Testo</label>
+                <textarea class="form-control" id="content" th:field="${review.text}" rows="4" required></textarea>
+            </div>
+            
+            <label>Valutazione:</label>
+            <div class="star-rating" style="margin-bottom: 30px;">
+                <span class="fa fa-star" data-value="1"></span>
+                <span class="fa fa-star" data-value="2"></span>
+                <span class="fa fa-star" data-value="3"></span>
+                <span class="fa fa-star" data-value="4"></span>
+                <span class="fa fa-star" data-value="5"></span>
+            </div>
+            <input type="hidden" th:field="*{vote}" id="voteInput" required min="1" max="5">
+
+            <button type="submit" class="btn btn-primary">Invia Recensione</button>
+        </form>
+    </div>
+
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const stars = document.querySelectorAll('.fa-star');
+        const ratingInput = document.getElementById('voteInput');
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                const rating = index + 1;
+                ratingInput.value = rating;
+
+                stars.forEach((s, i) => {
+                    s.classList.toggle('checked', i < rating);
+                });
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

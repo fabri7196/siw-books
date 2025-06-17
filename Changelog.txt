@@ -1,3 +1,17 @@
+* [F-17/06/2025]: Changelog.txt, home.html, formReview.html, formNewBook.html, book.html, Book.java, Review.java, 
+        BookController.java, ReviewController.java, UserService.java, AuthConfiguration.java : 
+
+    - home.html cambiata rotta per tasto Dettagli
+    - formReview.html introdotta vista per recensire un libro
+    - formNewBook.html predispozione per upload immagini (DA IMPLIMENTARE)
+    - book.html aggiunta sezione per mostrare le recensioni e piccoli miglioramenti grafici
+    - Book.java aggiunto evento a cascata su recensioni
+    - Review.java modificata associazione ManyToOne
+    - BookController.java cambiata rotta metodo getBook
+    - ReviewController.java aggiunti metodi GET e POST per la form aggiunta recensione
+    - UserService.java aggiunto metodo per ottenere tutti gli utenti (DA IMPLEMENTARE PER ADMIN)
+    - AuthConfiguration.java aggiunto percorso /book/{id} accedibile da tutti
+
 * [F-16/06/2025]: Changelog.txt, header.html, formRegisterUser.html, book.html, BookController.java e AuthenticationController.java :
     - Miglioramento grafico header.html per i dropdown-item, aggiunto dropdown-menu per gli admin
     - Aggiunto bottone home in formRegisterUser.html

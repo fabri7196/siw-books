@@ -34,7 +34,7 @@ public class Book {
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Review> reviews;
 
     @OneToMany(cascade = CascadeType.REMOVE)
@@ -114,5 +114,5 @@ public class Book {
             return false;
         return true;
     }
-    
+
 }
