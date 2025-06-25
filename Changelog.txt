@@ -1,3 +1,16 @@
+* [F-25/06/2025]: Changelog.txt, pom.xml, application.properties, AssetImage.java, StorageProperties.java,
+        WebConfig.java, AuthConfiguration.java, BookController.java, formNewBook.html, book.html e book.css : 
+    - Aggiunta dipendenza pom.xml per la gestione dell'upload
+    - application.properties configurazione directory upload e dimensione file
+    - AssetImage.java rimossa descrizione immagini
+    - StorageProperties.java definisce la location per gli upload
+    - WebConfig.java per permettere il recupero dell'immagine e mostrarla sul browser
+    - AuthConfiguration.java aggiunto path pubblico per poter visualizzare le immagini dei libri
+    - BookController.java aggiunta in addBook la gestione per l'upload delle immagini
+    - formNewBook.html modificata la form per permettere l'upload di più file
+    - book.html resa visibile l'immagine del libro
+    - book.css aggiunto miglioramento grafico per l'immagine di copertina, possibilità di ingrandirla cliccandoci
+
 * [F-17/06/2025]: Changelog.txt, home.html, formReview.html, formNewBook.html, book.html, Book.java, Review.java, 
         BookController.java, ReviewController.java, UserService.java, AuthConfiguration.java : 
 

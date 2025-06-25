@@ -18,8 +18,6 @@ public class AssetImage {
     @Column(nullable = false)
     private String path;
 
-    private String description;
-
     public Long getId() {
         return id;
     }
@@ -32,13 +30,6 @@ public class AssetImage {
     }
     public void setPath(String path) {
         this.path = path;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
     }
    
 }
