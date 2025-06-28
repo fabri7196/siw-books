@@ -1,3 +1,16 @@
+* [F-28/06/2025]: Changelog.txt, BookController.java, ReviewController.java, ReviewRepository.java, ReviewService.java, 
+        Review.java, User.java, 
+
+    - BookController.java modifica metodo getBook per permettere alla vista di book.html di inibire il bottone
+        aggiungi recensione se già è stata fatta da parte di un utente.
+    - ReviewController.java metodo getAddedReview aggiunto autore alle recensioni, implementato nuovo metodo
+        postRemoveReview così gli ADMIN possono rimuovere le recensioni
+    - ReviewRepository.java ricerca recensione fatta per utente e libro
+    - ReviewService.java introdotti nuovi servizi per la logica implementata sopra
+    - Review.java aggiunta variabile per autore delle recensione
+    - User.java aggiunte variabile per l'associazione con recensione e con le credenziali
+    - Modifiche grafiche book.html, header.html e book.css
+
 * [F-25/06/2025]: Changelog.txt, pom.xml, application.properties, AssetImage.java, StorageProperties.java,
         WebConfig.java, AuthConfiguration.java, BookController.java, formNewBook.html, book.html e book.css : 
     - Aggiunta dipendenza pom.xml per la gestione dell'upload

@@ -44,9 +44,27 @@ public class ReviewController {
 
     @PostMapping("/book/{id}/review/addReview")
     public String getAddedReview(@PathVariable("id") Long id, @ModelAttribute("review") Review review) {
+        UserDetails userDetails = globalController.getUser();
+        Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+        review.setAuthor(credentials.getUser());
+
         review.setBook(this.bookService.getBookById(id));
         review.setId(null);
         this.reviewService.saveReview(review);
         return "redirect:/book/" + id;
     }
+
+    @PostMapping("/book/{id}/{rId}/removeReview")
+    public String postRemoveReview(@PathVariable("id") Long id, @PathVariable("rId") Long rId) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            if(credentials.getRole().equals("ADMIN")) {
+                this.reviewService.removeReview(this.reviewService.findReviewById(rId));
+            }
+        }
+        
+        return "redirect:/book/" + id;
+    }
+    
 }

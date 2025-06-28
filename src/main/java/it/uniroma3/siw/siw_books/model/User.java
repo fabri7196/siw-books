@@ -1,10 +1,14 @@
 package it.uniroma3.siw.siw_books.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -27,6 +31,12 @@ public class User {
     @NotBlank
     @Column(unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "author")
+    private List<Review> reviews;
+
+    @OneToOne(mappedBy = "user")
+    private Credentials credentials;
 
     public String getName() {
         return name;
@@ -56,6 +66,20 @@ public class User {
         this.id = id;
     }
     
+    public List<Review> getReviews() {
+        return reviews;
+    }
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    } 
+ 
+    public Credentials getCredentials() {
+        return credentials;
+    }
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -91,6 +115,6 @@ public class User {
         } else if (!email.equals(other.email))
             return false;
         return true;
-    } 
-
+    }
+    
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Max;
@@ -30,6 +31,11 @@ public class Review {
     private String text;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User author;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private Book book;
     
     public Long getId() {
@@ -67,4 +73,10 @@ public class Review {
         this.book = book;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 }

@@ -22,6 +22,7 @@ import it.uniroma3.siw.siw_books.model.Credentials;
 import it.uniroma3.siw.siw_books.service.AssetImageService;
 import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
+import it.uniroma3.siw.siw_books.service.ReviewService;
 import it.uniroma3.siw.siw_books.storage.StorageProperties;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,6 +49,9 @@ public class BookController {
 
     @Autowired
     private StorageProperties storageProperties;
+
+    @Autowired
+    private ReviewService reviewService;
 
     @GetMapping("/formNewBook")
 	public String formNewBook(Model model) throws IOException {
@@ -100,13 +104,19 @@ public class BookController {
 
     @GetMapping("/book/{id}")
     public String getBook(@PathVariable("id") Long id, Model model) {
+        Book book = this.bookService.getBookById(id);
         UserDetails userDetails = globalController.getUser();
         if (userDetails != null) {
             Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
             model.addAttribute("user", credentials);
+            boolean alreadyReviewed = reviewService.userHasReviewedBook(credentials.getUser(), book);
+            model.addAttribute("alreadyReviewed", alreadyReviewed);
+        }
+        else {
+            model.addAttribute("alreadyReviewed", false);
         }
        
-        model.addAttribute("book", this.bookService.getBookById(id));
+        model.addAttribute("book", book);
         return "book.html";
     }
 
