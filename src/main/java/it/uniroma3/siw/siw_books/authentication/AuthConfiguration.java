@@ -53,7 +53,7 @@ import javax.sql.DataSource;
                 .authorizeHttpRequests(requests -> requests
 //                .requestMatchers("/**").permitAll()
                         // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-                        .requestMatchers(HttpMethod.GET, "/", "/register", "/css/**", "/images/**", "/upload/**","/book/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/home", "/register", "/css/**", "/images/**", "/upload/**","/book/{id}").permitAll()
                         // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                         .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
@@ -62,12 +62,12 @@ import javax.sql.DataSource;
                         .anyRequest().authenticated()).formLogin(login -> login
                         .loginPage("/login")
                         .permitAll()
-                        .defaultSuccessUrl("/", true)
+                        .defaultSuccessUrl("/home", true)
                         .failureUrl("/login?error=true"))
                         .logout(logout -> logout
                         // il logout è attivato con una richiesta GET a "/logout"
                         .logoutUrl("/logout")
-                        // in caso di successo, si viene reindirizzati alla home
+                        // in caso di successo, si viene reindirizzati alla pagina index
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")

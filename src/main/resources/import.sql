@@ -1,9 +1,9 @@
-insert into book (year_publication, code, id, title) values(2025, '1',nextval('seq_id_book'), 'prova');
-insert into book (year_publication, code, id, title) values(2025, '2',nextval('seq_id_book'), 'prova');
+insert into book (year_publication, code, id, title) values(2025, '1',nextval('seq_id_book'), 'Prova');
+insert into book (year_publication, code, id, title) values(2025, '2',nextval('seq_id_book'), 'Secondo');
 insert into book (year_publication, code, id, title) values(2025, '3',nextval('seq_id_book'), 'prova');
-insert into book (year_publication, code, id, title) values(2025, '4',nextval('seq_id_book'), 'prova');
+insert into book (year_publication, code, id, title) values(2025, '4',nextval('seq_id_book'), 'Il sole');
 insert into book (year_publication, code, id, title) values(2025, '5',nextval('seq_id_book'), 'prova');
-insert into book (year_publication, code, id, title) values(2025, '6',nextval('seq_id_book'), 'prova');
+insert into book (year_publication, code, id, title) values(2025, '6',nextval('seq_id_book'), 'Tarzan');
 insert into book (year_publication, code, id, title) values(2025, '7',nextval('seq_id_book'), 'prova');
 insert into book (year_publication, code, id, title) values(2025, '8',nextval('seq_id_book'), 'prova');
 insert into book (year_publication, code, id, title) values(2025, '9',nextval('seq_id_book'), 'prova');

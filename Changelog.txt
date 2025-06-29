@@ -1,3 +1,15 @@
+* [F-29/06/2025]: Changelog.txt, AuthConfiguration.java, AuthenticationController.java, index.html, 
+        formLogin.html, formRegisterUser.html, userProfile.html, header.html, book.html e book.css :
+    - AuthConfiguration.java quando si effettua il login si viene reinderizzati nell'home, 
+        aggiunti path "/" e "/home" visibili a tutti
+    - AuthenticationController.java nuovo metodo con nuovo path per pagina benvenuto iniziale
+    - Introdotta vista index.html come benvenuto al sito web
+    - formLogin.html e formRegisterUser.html cambiati path una volta effettuato il login
+    - userProfile.html miglioramenti grafici
+    - header.html ora il logo nella navbar è cliccabile e atterra sulla pagina di benvenuto
+    - book.html e book.css introdotto carosello per vedere tutte le immagini di un libro, 
+        rimosso link galleria
+
 * [F-28/06/2025]: Changelog.txt, BookController.java, ReviewController.java, ReviewRepository.java, ReviewService.java, 
         Review.java, User.java, 
 

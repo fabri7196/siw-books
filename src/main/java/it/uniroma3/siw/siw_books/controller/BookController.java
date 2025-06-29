@@ -99,7 +99,7 @@ public class BookController {
         book.setCovers(listAssetImage);
         this.bookService.saveBook(book);
         
-        return "addedBook.html";
+        return "redirect:/book/" + book.getId();
 	}
 
     @GetMapping("/book/{id}")

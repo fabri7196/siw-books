@@ -31,20 +31,22 @@ public class AuthenticationController {
 
     @Autowired
     private BookService bookService;
-	
-	@GetMapping(value = "/register") 
-	public String showRegisterForm (Model model) {
-		model.addAttribute("user", new User());
-		model.addAttribute("credentials", new Credentials());
-		return "formRegisterUser.html";
-	}
-	
-	@GetMapping(value = "/login") 
-	public String showLoginForm (Model model) {
-		return "formLogin.html";
-	}
 
-	@GetMapping(value = "/") 
+    @GetMapping("/")
+    public String getWelcome(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication instanceof AnonymousAuthenticationToken) {
+            model.addAttribute("user", null);
+            return "index.html";
+        }
+        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
+        model.addAttribute("user", credentials);
+        return "index.html";
+    }
+    
+
+    @GetMapping(value = "/home") 
 	public String getHome(Model model) {
         model.addAttribute("requestURI", "/");
         model.addAttribute("books", this.bookService.getAllBooks());
@@ -58,6 +60,18 @@ public class AuthenticationController {
             model.addAttribute("user", credentials);
             return "home.html"; 
 		}
+	}
+	
+	@GetMapping(value = "/register") 
+	public String showRegisterForm (Model model) {
+		model.addAttribute("user", new User());
+		model.addAttribute("credentials", new Credentials());
+		return "formRegisterUser.html";
+	}
+	
+	@GetMapping(value = "/login") 
+	public String showLoginForm (Model model) {
+		return "formLogin.html";
 	}
 		
     @GetMapping(value = "/success")

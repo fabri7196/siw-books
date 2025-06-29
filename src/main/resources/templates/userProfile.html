@@ -24,9 +24,18 @@
                         <li class="list-group-item" th:text="'🔑 Ruolo: ' + ${user.role}"></li>
                         <li class="list-group-item" th:text="'📧 E-mail: ' + ${user.user.email}"></li>
                     </ul>
-                    <div class="d-grid gap-2">
-                        <a href="#" class="btn btn-primary">Modifica Password</a>
-                        <a href="#" class="btn btn-danger">Cancella Utente</a>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <form method="GET">
+                            <button type="submit" class="btn btn-outline-primary btn-lg px-4">
+                                Modifica Password
+                            </button>
+                        </form>
+                        <form method="" 
+                            onsubmit="return confirm('Sei sicuro di voler cancellare l\'utente?');">
+                            <button type="submit" class="btn btn-outline-danger btn-lg px-4">
+                                Cancella Utente
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
