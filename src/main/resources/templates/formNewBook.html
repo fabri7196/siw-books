@@ -15,28 +15,33 @@
     <div class="container-fluid background-overlay m-0">
         <div class="row justify-content-center align-items-center min-vh-100 d-flex">
             <div class="col-5">
-                <div class="card">
+                <div class="card rounded-4">
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-4">Aggiungi Nuovo Libro</h2>
+                        <div class="card-header text-center mb-4" style="background-color: white;">
+                            <h2 class="card-title text-center mb-4">Aggiungi un nuovo libro</h2>
+                        </div>
                         <form method="POST" th:action="@{/addBook}" th:object="${book}" enctype="multipart/form-data">
                             <div class="mb-3">
-                                <label for="title" class="form-label">Titolo</label>
-                                <input required type="text" class="form-control" id="title" th:field="${book.title}" />
+                                <label for="title" class="form-label" style="font-size: large;">Titolo</label>
+                                <input required type="text" class="form-control" id="title" placeholder="Titolo"
+                                    th:field="${book.title}" />
                             </div>
                             <div class="mb-3">
-                                <label for="year" class="form-label">Anno di pubblicazione</label>
-                                <input required type="text" class="form-control" id="year" th:field="${book.year_publication}" />
+                                <label for="year" class="form-label" style="font-size: large;">Anno di pubblicazione</label>
+                                <input required type="text" class="form-control" id="year"
+                                    placeholder="Anno di pubblicazione" th:field="${book.year_publication}" />
                             </div>
                             <div class="mb-3">
-                                <label for="code" class="form-label">Codice</label>
-                                <input required type="number" class="form-control" id="code" th:field="${book.code}" />
+                                <label for="code" class="form-label" style="font-size: large;">Codice</label>
+                                <input required type="text" class="form-control" id="code" placeholder="Codice"
+                                    th:field="${book.code}" />
                             </div>
                             <div class="mb-3">
-                                    <label for="images" class="form-label">Immagini del libro</label>
-                                    <input type="file" class="form-control" id="images" multiple accept="image/*" name="files"/>
+                                <label for="images" class="form-label" style="font-size: large;">Immagini</label>
+                                <input type="file" class="form-control" id="images" multiple accept="image/*" name="files" />
                             </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Aggiungi Libro</button>
+                                <button type="submit" class="btn btn-xl">Aggiungi Libro</button>
                             </div>
                         </form>
                     </div>

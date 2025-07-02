@@ -10,38 +10,47 @@
 
 <body>
 
-    <div class="container-fluid background-overlay">
-        <div class="a-section a-spacing-none auth-navbar">
-            <div class="a-section a-spacing-medium a-text-center">
+    <div class="main-content-fluid background-overlay">
+        <div class="main-content-container">
+            <div class="a-section">
                 <a th:href="@{/home}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16" style="color: aliceblue;">
                         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-                    </svg>                </a>
+                    </svg>                
+                </a> 
             </div>
-        </div>
 
-        <div class="row justify-content-center min-vh-100 d-flex align-items-center">
-            <div class="col-md-4">
-                <div class="card shadow rounded-3">
-                    <div class="card-header text-center">
-                        <h4>Login</h4>
-                    </div>
-                    <div class="card-body">
-                        <form th:action="@{/login}" method="POST">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" id="username" required>
+            <div class="userArea">
+                <div class="row justify-content-center d-flex align-items-center vh-100 w-100">
+                    <div class="col-md-5 p-0">
+                        <div class="card shadow rounded-4 p-3">
+                            <div class="card-header text-center" style="background-color: white;">
+                                <h3>Effettua l'accesso con</h3>
                             </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password" required>
+                            <div class="card-body">
+                                <form th:action="@{/login}" method="POST">
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label" style="font-size: large;">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label" style="font-size: large;">Password</label>
+                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                                    </div>
+                                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                                        Invalid username or password.
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-outline-secondary w-25">Login</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                                Invalid username or password.
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100" th:href="@{/home}">Login</button>
-                            <a th:href="@{/register}" class="btn btn-outline-secondary w-100 mt-2">Registrati</a>
-                        </form>
+                        </div>
+                        <div class="newAccount d-flex flex-column justify-content-center align-items-center mt-2">
+                            <p class="m-0"><strong>Non hai ancora un account?</strong>
+                                <a th:href="@{/register}" style="color:darkblue">Registrati adesso</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

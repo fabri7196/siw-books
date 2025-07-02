@@ -1,3 +1,17 @@
+* [F-02/07/2025]: Changelog.txt, AuthenticationController.java, BookController.java, BookService.java, application.properties,
+        index.css, index.html, home.html, form tutte : 
+    - AuthenticationController.java nel metodo dopo il login commentata la parte che ritorna una vista specifica per 
+        l'ADMIN dato che mostro la stessa vista, con condizioni interne al file html.
+    - BookController.java nel metodo rimuovi libro introdotta parte codice per la rimozione della cartella
+        in locale contenente le immagini del libro.
+    - BookService.java introdotto metodo remove
+    - application.properties rimossa sezione storagelocation
+    - Aggiunti libri con relative immagini
+    - index.css style per la pagina index
+    - index.html miglioramente grafici
+    - home.html miglioramenti grafici e aggiunta immagine copertina alle card dei libri
+    - Miglioramenti grafici a tutte le form.
+
 * [F-29/06/2025]: Changelog.txt, AuthConfiguration.java, AuthenticationController.java, index.html, 
         formLogin.html, formRegisterUser.html, userProfile.html, header.html, book.html e book.css :
     - AuthConfiguration.java quando si effettua il login si viene reinderizzati nell'home, 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Siw-Books</title>
+    <title>Homepage - SiwBooks</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/common.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -14,26 +14,31 @@
 
     <header th:replace="~{fragments/header :: header}"></header>
 
-    <div class="container-fluid background-overlay p-2 min-vh-100">
+    <div class="main-content container-fluid background-overlay p-2 min-vh-100" >
         <div class="row d-flex justify-content-start m-0">
 
             <div th:if="${books.isEmpty()}">Non ci sono Libri nel sistema</div>
 
-            <div th:each="book : ${books}" class="col-3 p-2">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="..." />
+            <div th:each="book : ${books}" class="col-4 p-2">
+                <div class="card rounded-4" style="background-color: rgba(255,255,255,0); border: none; box-shadow: none;">
+                    <div th:if="${not #lists.isEmpty(book.covers)}" class="d-flex justify-content-center">
+                        <img th:src="@{${book.covers[0].path}}" class="card-img-top mt-2 rounded-4" alt="Copertina libro" style="object-fit: cover; width: 200px; height: 300px;"/>
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title" th:text="${book.title}"></h5>
-                        <p class="card-text" th:text="${book.year_publication}"></p>
-                        <a th:href="@{'/book/' + ${book.id}}" class="btn btn-primary">Dettagli</a>
+                        <div class="d-flex align-items-center justify-content-center"> 
+                            <a th:href="@{'/book/' + ${book.id}}" class="btn btn-xl" th:text="${book.title}"></a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <form th:if="${user != null and user.role == 'ADMIN'}"
+                                th:action="@{'/book/' + ${book.id} + '/remove'}" method="POST" class="m-0">
+                                <button type="submit" class="btn btn-sm">Rimuovi</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    </div>
-
     <footer th:replace="~{fragments/footer :: footer}"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"

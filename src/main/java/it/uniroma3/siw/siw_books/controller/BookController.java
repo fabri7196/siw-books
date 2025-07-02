@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 
 import it.uniroma3.siw.siw_books.model.AssetImage;
@@ -101,6 +102,18 @@ public class BookController {
         
         return "redirect:/book/" + book.getId();
 	}
+
+    @PostMapping("/book/{id}/remove")
+    public String postRemoveBook(@PathVariable("id") Long id) {
+        Path folderPath = Paths.get("siw-books/upload/", String.valueOf(id));
+        try {
+            FileSystemUtils.deleteRecursively(folderPath);
+        } catch (IOException e) {}
+
+        this.bookService.removeBook(this.bookService.getBookById(id));
+        return "redirect:/home";
+    }
+    
 
     @GetMapping("/book/{id}")
     public String getBook(@PathVariable("id") Long id, Model model) {

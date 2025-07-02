@@ -23,5 +23,9 @@ public class BookService {
     public Book saveBook(Book book) {
         return this.bookRepository.save(book);
     }
+
+    public void removeBook(Book book) {
+        this.bookRepository.delete(book);
+    }
     
 }
