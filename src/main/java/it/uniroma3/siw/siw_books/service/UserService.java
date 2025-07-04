@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.uniroma3.siw.siw_books.model.Credentials;
 import it.uniroma3.siw.siw_books.model.User;
 import it.uniroma3.siw.siw_books.repository.UserRepository;
 
@@ -27,12 +28,19 @@ public class UserService {
     }
 
     @Transactional
-    public List<User> getAllUsers() {
+    public List<User> getAllUsersExceptCurrent(Credentials credentials) {
         List<User> result = new ArrayList<>();
-        Iterable<User> iterable = this.userRepository.findAll();
-        for(User user : iterable)
-            result.add(user);
-        return result;
-    }
+        result = this.userRepository.getAllUsersExceptCurrent(credentials);
+        
+        if(result.isEmpty()) {
+            return List.of();
+        }
 
+        return result;
+        }
+
+    @Transactional
+    public void deleteUser(Long id){
+        this.userRepository.deleteById(id);
+    }
 }

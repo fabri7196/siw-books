@@ -1,3 +1,15 @@
+* [F-04/07/2025]: Changelog.txt, header.html, showUsers.html, registrationSuccess.html, User.java,  
+        UserService.java, UserRepository.java, UserController.java, AuthenticationController.java e AuthConfiguration.java :
+    - header.html introdotta rotta al dropdown Rimuovi utenti
+    - showUsers.html introdotta nuova vista che mostra tutti gli utenti registrati escluso quello loggato
+    - registrationSuccess.html introdotta nuova mostra che conferma l'avvenuta registrazione
+    - User.java aggiunto evento a cascata che rimuove anche le recensioni e le credenziali di uno user quando rimosso
+    - UserService.java, UserRepository.java introdotta query che prende tutti gli utenti escluso quello loggato e metodo
+        per la cancellazione di un utente
+    - UserController.java introdotta logica per la rotta /AllUsers
+    - AuthenticationController.java gestito il ritorno della vista per il successo della registrazione 
+    - AuthConfiguration.java aggiunte rotte : /AllUsers /users/delete/{userId} accessibili solo agli ADMIN
+
 * [F-04/07/2025]: Changelog.txt, BookService.java, BookRepository.java, BookController.java, AuthenticationController.java,
         AuthConfiguration.java
     - BookService.java aggiunto metodo per la ricerca del libro in base al titolo 

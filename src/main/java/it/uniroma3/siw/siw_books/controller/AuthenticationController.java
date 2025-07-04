@@ -69,31 +69,31 @@ public class AuthenticationController {
 	}
 	
 	@GetMapping(value = "/register") 
-	public String showRegisterForm (Model model) {
+	public String getRegisterForm (Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("credentials", new Credentials());
 		return "formRegisterUser.html";
 	}
 	
 	@GetMapping(value = "/login") 
-	public String showLoginForm (Model model) {
+	public String getLoginForm (Model model) {
 		return "formLogin.html";
 	}
 		
-    @GetMapping(value = "/success")
-    public String defaultAfterLogin(Model model) {
+    // @GetMapping(value = "/success")
+    // public String defaultAfterLogin(Model model) {
         
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-        model.addAttribute("user", credentials);
-    	// if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-        //     return "admin/indexAdmin.html";
-        // }
-        return "home.html";
-    }
+    // 	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    // 	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+    //     model.addAttribute("user", credentials);
+    // 	// if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+    //     //     return "admin/indexAdmin.html";
+    //     // }
+    //     return "home.html";
+    // }
 
 	@PostMapping(value = { "/register" })
-    public String registerUser(@Valid @ModelAttribute("user") User user,
+    public String postRegisterUser(@Valid @ModelAttribute("user") User user,
         BindingResult userBindingResult, @Valid
         @ModelAttribute("credentials") Credentials credentials,
         BindingResult credentialsBindingResult,
@@ -104,8 +104,8 @@ public class AuthenticationController {
             userService.saveUser(user);
             credentials.setUser(user);
             credentialsService.saveCredentials(credentials);
-            model.addAttribute("user", user);
-            return "/";
+            model.addAttribute("user", credentials);
+            return "registrationSuccess.html";
         }
         return "/";
     }

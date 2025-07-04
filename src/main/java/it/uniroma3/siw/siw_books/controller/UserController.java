@@ -1,0 +1,56 @@
+package it.uniroma3.siw.siw_books.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import it.uniroma3.siw.siw_books.model.Credentials;
+import it.uniroma3.siw.siw_books.model.User;
+import it.uniroma3.siw.siw_books.service.CredentialsService;
+import it.uniroma3.siw.siw_books.service.UserService;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private GlobalController globalController;
+
+    @Autowired 
+    private CredentialsService credentialsService;
+
+    @GetMapping("/AllUsers")
+    public String getUsers(Model model) {
+        UserDetails userDetails = this.globalController.getUser();
+        Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
+        List<User> users = this.userService.getAllUsersExceptCurrent(credentials);
+
+        List<Integer> numberReviews = new ArrayList<>();
+        for (User user : users) {
+            numberReviews.add(user.getReviews().size());
+        }
+        
+        model.addAttribute("user", credentials);
+        model.addAttribute("numberReviews", numberReviews);
+        model.addAttribute("users", users);
+
+        return "showUsers.html";
+    }
+
+    @PostMapping("/users/delete/{userId}")
+    public String postDeleteUser(@PathVariable("userId") Long id) {
+        this.userService.deleteUser(id);
+        return "redirect:/AllUsers";
+    }
+    
+
+}
