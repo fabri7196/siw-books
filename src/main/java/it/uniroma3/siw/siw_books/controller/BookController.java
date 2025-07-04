@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class BookController {
@@ -128,9 +129,22 @@ public class BookController {
         else {
             model.addAttribute("alreadyReviewed", false);
         }
-       
+        model.addAttribute("numReviews",this.reviewService.countReview(id));
         model.addAttribute("book", book);
         return "book.html";
     }
+
+    @GetMapping("/home/searchBooks")
+    public String getSearchBooks(@RequestParam(name = "title", required = false) String title, RedirectAttributes redirectAttributes, Model model) {
+        List<Book> books = this.bookService.getBooksByTitle(title);
+        if(!books.isEmpty()) {
+            model.addAttribute("books", books);
+            return "home.html";
+        }
+
+        redirectAttributes.addAttribute("notFound", true);
+        return "redirect:/home";
+    }
+    
 
 }

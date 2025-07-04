@@ -1,3 +1,12 @@
+* [F-04/07/2025]: Changelog.txt, BookService.java, BookRepository.java, BookController.java, AuthenticationController.java,
+        AuthConfiguration.java
+    - BookService.java aggiunto metodo per la ricerca del libro in base al titolo 
+    - BookRepository.java aggiunta query per ricerca libro in base al titolo (vengono ignorate le lettere maiuscole)
+    - BookController.java introdotto metodo per la ricerca del libro
+    - AuthenticationController.java aggiunto al modello un attributo che in caso il libro non venga trovato
+        dalla barra di ricerca, permette un alert per informare che il libro non è stato trovato
+    - AuthConfiguration.java sistemati i vari reindirizzamenti dopo aver effettuato il login
+
 * [F-04/07/2025]: Changelog.txt, ReviewService.java, ReviewRepository.java, ReviewController.java
     - ReviewService.java aggiunto countReview 
     - ReviewRepository.java aggiunta query per conteggio recensioni

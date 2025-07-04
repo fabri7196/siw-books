@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.siw_books.model.Credentials;
 import it.uniroma3.siw.siw_books.model.User;
@@ -47,9 +48,14 @@ public class AuthenticationController {
     
 
     @GetMapping(value = "/home") 
-	public String getHome(Model model) {
-        model.addAttribute("requestURI", "/");
+	public String getHome(@RequestParam(name = "notFound", required = false) Boolean notFound, Model model) {
+        model.addAttribute("requestURI", "/home");
         model.addAttribute("books", this.bookService.getAllBooks());
+
+        if(Boolean.TRUE.equals(notFound)) {
+            model.addAttribute("showNotFound", true);
+        }
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication instanceof AnonymousAuthenticationToken) {
 	        return "home.html";

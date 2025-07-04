@@ -1,5 +1,7 @@
 package it.uniroma3.siw.siw_books.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,15 @@ public class BookService {
 
     public void removeBook(Book book) {
         this.bookRepository.delete(book);
+    }
+
+    public List<Book> getBooksByTitle(String title) {
+        if(title == null || title.isEmpty()) {
+            return List.of();
+        }
+        // String searchTitleBook = title.substring(0, 1).toUpperCase().concat(title.substring(1).toLowerCase());
+        // searchTitleBook = searchTitleBook.trim();
+        return this.bookRepository.findAllByTitleIgnoreCase(title);
     }
     
 }
