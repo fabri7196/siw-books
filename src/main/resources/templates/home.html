@@ -13,11 +13,18 @@
 <body>
 
     <header th:replace="~{fragments/header :: header}"></header>
+    
 
     <div class="main-content container-fluid background-overlay p-2 min-vh-100" >
         <div class="row d-flex justify-content-start m-0">
 
             <div th:if="${books.isEmpty()}">Non ci sono Libri nel sistema</div>
+
+            <div th:if="${showNotFound}">
+                <script>
+                    alert("Questo libro non è stato trovato.");
+                </script>
+            </div>
 
             <div th:each="book : ${books}" class="col-4 p-2">
                 <div class="card rounded-4" style="background-color: rgba(255,255,255,0); border: none; box-shadow: none;">

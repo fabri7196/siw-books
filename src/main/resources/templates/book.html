@@ -85,7 +85,10 @@
 
             <!-- Recensioni -->
             <div class="text-start">
-                <h4 class="mb-3">📝 Recensioni</h4>
+                <h4 class="mb-3">
+                    📝 Recensioni
+                    <small class="text-muted">(<span th:text="${numReviews}">0</span>)</small>
+                </h4>
 
                 <p th:if="${#lists.isEmpty(book.reviews)}" class="fst-italic text-muted">Nessuna recensione disponibile.
                 </p>
@@ -125,7 +128,7 @@
             <!-- Scrivi una recensione -->
             <div class="text-center mt-4">
                 <a th:if="${!alreadyReviewed}" th:href="@{'/book/' + ${book.id} + '/review'}"
-                    class="btn btn-success btn-lg px-4">
+                    class="btn btn-outline-dark btn-lg px-4">
                     ✍️ Scrivi una recensione
                 </a>
                 <p th:if="${alreadyReviewed}" class="text-muted mt-2">

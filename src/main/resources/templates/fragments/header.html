@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" th:classappend="${requestURI == '/'} ? ' active' : ''" aria-current="page" th:href="@{/home}">Home</a>
+                        <a class="nav-link" th:classappend="${requestURI == '/home'} ? ' active' : ''" aria-current="page" th:href="@{/home}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" th:classappend="${requestURI == '/formNewBook'} ? ' active' : ''" role="button" data-bs-toggle="dropdown">
@@ -38,8 +38,8 @@
                 </ul>
                 
                 <!-- Sezione destra (ricerca + profilo) -->
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Inserisci titolo libro" aria-label="Search" />
+                <form class="d-flex me-3" role="search" method="GET" th:action="@{/home/searchBooks}">
+                    <input class="form-control me-2" type="search" name="title" placeholder="Inserisci titolo libro" aria-label="Search" />
                     <button class="btn btn-outline-info" type="submit">Ricerca</button>
                 </form>
 

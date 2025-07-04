@@ -25,20 +25,21 @@
 <body>
     <header th:replace="~{fragments/header :: header}"></header>
 
-    <div class="container-fluid m-0 background-overlay min-vh-100">
-        <h2 class="mb-4">Aggiungi una Recensione</h2>
+    <div class="container-fluid background-overlay min-vh-100" style="padding-top: 5%;">
         <form th:action="@{'/book/'+${book.id}+'/review/addReview'}" th:object="${review}" method="POST"
             class="p-4 rounded bg-light shadow">
+                            <h1 class="mb-4"><strong>Aggiungi una recensione</strong></h1>
+                            <hr style="background-color: black; height: 4px;"></hr>
             <div class="mb-3">
-                <label for="title" class="form-label">Titolo</label>
-                <input type="text" class="form-control" id="title" th:field="${review.title}" required>
+                <label for="title" class="form-label" style="font-size: x-large;"><strong>Titolo</strong></label>
+                <input type="text" class="form-control" id="title" th:field="${review.title}" placeholder="Titolo" required>
             </div>
             <div class="mb-3">
-                <label for="content" class="form-label">Testo</label>
-                <textarea class="form-control" id="content" th:field="${review.text}" rows="4" required></textarea>
+                <label for="content" class="form-label" style="font-size: x-large;"><strong>Testo</strong></label>
+                <textarea class="form-control" id="content" th:field="${review.text}" rows="4" placeholder="Scrivi qui la tua recensione!" required></textarea>
             </div>
             
-            <label>Valutazione:</label>
+            <label style="font-size: x-large; padding-bottom: 2px;"><strong>Valutazione:</strong></label>
             <div class="star-rating" style="margin-bottom: 30px;">
                 <span class="fa fa-star" data-value="1"></span>
                 <span class="fa fa-star" data-value="2"></span>
@@ -48,7 +49,9 @@
             </div>
             <input type="hidden" th:field="*{vote}" id="voteInput" required min="1" max="5">
 
-            <button type="submit" class="btn btn-primary">Invia Recensione</button>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-light">Invia Recensione</button>
+            </div>
         </form>
     </div>
 

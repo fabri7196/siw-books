@@ -1,3 +1,9 @@
+* [F-04/07/2025]: Changelog.txt, userProfile.html, book.html, home.html, formNewBook.html e formReview.html :
+    - Aggiornata schermata profilo utente e aggiunta icona.
+    - Migliorata pagina book.html e aggiunto contatore per il numero delle recensioni
+    - Aggiunto pop-up se il libro non è trovato nella barra di ricerca
+    - Miglioramento grafico formNewBook e formReview.
+
 * [F-02/07/2025]: Changelog.txt, AuthenticationController.java, BookController.java, BookService.java, application.properties,
         index.css, index.html, home.html, form tutte : 
     - AuthenticationController.java nel metodo dopo il login commentata la parte che ritorna una vista specifica per 

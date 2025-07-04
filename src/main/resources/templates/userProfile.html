@@ -13,26 +13,37 @@
 <body>
     <header th:replace="~{fragments/header :: header}"></header>
 
+
     <div class="container-fluid background-overlay p-0">
-        <div class="row align-items-center justify-content-center min-vh-100 d-flex">
-            <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+        <div class="row align-items-center justify-content-center min-vh-100 d-flex w-100">
+            <div class="card shadow-lg p-4 bg-dark rounded-4" style="max-width: 600px; width: 100%;">
                 <div class="card-body text-center">
-                    <h2 class="card-title mb-4"
-                        th:text="'Profilo di ' + ${user.user.name} + ' ' + ${user.user.surname}"></h2>
+                    <h1 class="card-title mb-4 text-white"
+                        th:text="'Profilo di ' + ${user.user.name} + ' ' + ${user.user.surname}"></h1>
                     <ul class="list-group list-group-flush mb-4 text-start">
-                        <li class="list-group-item" th:text="'👤 Username: ' + ${userDetails.username}"></li>
-                        <li class="list-group-item" th:text="'🔑 Ruolo: ' + ${user.role}"></li>
-                        <li class="list-group-item" th:text="'📧 E-mail: ' + ${user.user.email}"></li>
+                        <figure class="image profile-image mb-4" style="width: 120px; height: 120px; margin: 0 auto;">
+							<img class="is-rounded"
+								th:src="@{/images/avatar-svgrepo-com.svg}">
+						</figure>
+                        <li class="list-group-item bg-dark text-white" >
+                            <h3 th:text="'👤 Username: ' + ${userDetails.username}"></h3>
+                        </li>
+                        <li class="list-group-item bg-dark text-white">
+                            <h3 th:text="'📧 E-mail: ' + ${user.user.email}"></h3>
+                        </li>
+                        <li class="list-group-item bg-dark text-white">
+                            <h3 th:text="'🔑 Ruolo: ' + ${user.role}"></h3>
+                        </li>
                     </ul>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
                         <form method="GET">
-                            <button type="submit" class="btn btn-outline-primary btn-lg px-4">
+                            <button type="submit" class="btn btn-light btn-lg px-4">
                                 Modifica Password
                             </button>
                         </form>
                         <form method="" 
                             onsubmit="return confirm('Sei sicuro di voler cancellare l\'utente?');">
-                            <button type="submit" class="btn btn-outline-danger btn-lg px-4">
+                            <button type="submit" class="btn btn-danger btn-lg px-4">
                                 Cancella Utente
                             </button>
                         </form>
@@ -41,7 +52,6 @@
             </div>
         </div>
     </div>
-
 
     <footer th:replace="~{fragments/footer :: footer}"></footer>
 
