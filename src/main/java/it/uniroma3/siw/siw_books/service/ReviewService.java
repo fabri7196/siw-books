@@ -29,4 +29,8 @@ public class ReviewService {
     public void removeReview(Review review) {
         this.reviewRepository.delete(review);
     }
+
+    public int countReview(Long idBook) {
+        return this.reviewRepository.countReview(idBook);
+    }
 }

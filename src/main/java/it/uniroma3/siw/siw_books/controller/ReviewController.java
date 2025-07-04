@@ -36,6 +36,10 @@ public class ReviewController {
         if (userDetails != null) {
             Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
             model.addAttribute("user", credentials);
+            if(this.reviewService.userHasReviewedBook(credentials.getUser(), this.bookService.getBookById(id)))
+            {
+                return "redirect:/book/" +id;
+            }
         }
         model.addAttribute("review", new Review());
         model.addAttribute("book", this.bookService.getBookById(id));

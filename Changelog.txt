@@ -1,3 +1,9 @@
+* [F-04/07/2025]: Changelog.txt, ReviewService.java, ReviewRepository.java, ReviewController.java
+    - ReviewService.java aggiunto countReview 
+    - ReviewRepository.java aggiunta query per conteggio recensioni
+    - ReviewController.java accesso a scrivi recensione solo se l'utente è loggato e non ha
+        già fatto la recensione per il libro corrente
+
 * [F-04/07/2025]: Changelog.txt, userProfile.html, book.html, home.html, formNewBook.html e formReview.html :
     - Aggiornata schermata profilo utente e aggiunta icona.
     - Migliorata pagina book.html e aggiunto contatore per il numero delle recensioni
