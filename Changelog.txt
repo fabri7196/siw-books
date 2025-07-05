@@ -1,3 +1,12 @@
+* [F-05/07/2025]: Changelog.txt, changePass.html, confirmChangePass.html, home.html, formLogin.html, 
+            userProfile.html, AuthenticationController.java :
+    - changePass.html introdotta vista con form per il cambio password
+    - confirmChangePass.html introdotta vista per il successo del cambio password
+    - userProfile.html aggiunta rotta al bottone modifica password
+    - AuthenticationController.java aggiunta logica per il cambio password (MANCA LA VALIDAZIONE DATI)
+    - home.html migliorato bottone rimuovi libro per gli admin
+    - formLogin.html posizionata correttamente il ritorno alla homepage
+
 * [F-04/07/2025]: Changelog.txt, header.html, showUsers.html, registrationSuccess.html, User.java,  
         UserService.java, UserRepository.java, UserController.java, AuthenticationController.java e AuthConfiguration.java :
     - header.html introdotta rotta al dropdown Rimuovi utenti

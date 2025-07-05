@@ -118,4 +118,38 @@ public class AuthenticationController {
         model.addAttribute("requestURI", "/userProfile");
         return "userProfile.html";
     }
+
+    @GetMapping("/userProfile/changePass")
+    public String getFormNewPass(Model model) {
+        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+        model.addAttribute("user", credentials);
+        return "changePass.html";
+    }
+    
+    @PostMapping("/userProfile/changePass/success")
+    public String postFormNewPass(@RequestParam("oldPassword") String oldPass, 
+        @RequestParam("newPassword") String newPass, 
+        @RequestParam("confirmNewPassword") String confirmNewPass, Model model) {
+        
+            UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+        model.addAttribute("user", credentials);
+        
+        if (!newPass.equals(confirmNewPass)) {
+            //Validazione dati, la password non coincide
+            return "redirect:/home";            //MOMENTANEO
+        }
+
+        if (oldPass.equals(newPass)) {
+            //Validazione dati, vecchia pass uguale alla nuova
+            return "redirect:/home";            //MOMENTANEO
+        }
+
+        credentials.setPassword(confirmNewPass);
+        this.credentialsService.saveCredentials(credentials);
+        
+        return "confirmChangePass.html";
+    }
+    
 }
