@@ -1,3 +1,6 @@
+* [F-07/07/2025]: Changelog.txt : 
+    - Cambiati metadati (Sezione title) di tutti i file html. 
+
 * [F-05/07/2025]: Changelog.txt, changePass.html, confirmChangePass.html, home.html, formLogin.html, 
             userProfile.html, AuthenticationController.java :
     - changePass.html introdotta vista con form per il cambio password
