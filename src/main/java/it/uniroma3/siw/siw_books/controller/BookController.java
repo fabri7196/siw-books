@@ -128,9 +128,11 @@ public class BookController {
         }
         else {
             model.addAttribute("alreadyReviewed", false);
+            // model.addAttribute("user", null);
         }
         model.addAttribute("numReviews",this.reviewService.countReview(id));
         model.addAttribute("book", book);
+        model.addAttribute("authors", book.getAuthors());
         return "book.html";
     }
 

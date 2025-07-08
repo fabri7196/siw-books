@@ -1,3 +1,18 @@
+* [F-08/07/2025]: Changelog.txt, pom.xml, AuthConfiguration.java, header.html, formNewAuthor.html, authors.html, 
+        author.html, book.html, BookService.java, AuthorService.java, AuthorController.java e BookController.java: 
+    - Aggiunta dipendenza spring security extras
+    - AuthConfiguration aggiunte rotte con vari permessi di accesso
+    - header.html aggiunte nuove funzionalità per la pagina degli autori, ovvero la ricerca per cognome
+        e vai dropdown item per aggiunta autori.
+    - formNewAuthor.html nuova vista per aggiungere un nuovo autore al sito
+    - authors.html nuova vista per mostrare tutti gli autori presenti nel sistema
+    - author.html nuova vista per mostrare i dettagli di un singolo autore
+    - book.html aggiunto bottone per aggiungere/rimuovere un autore ad un libro, permessi necessari ADMIN
+    - BookService.java aggiunto metodo per aggiungere e metodo per rimuovere un autore dal libro
+    - AuthorService.java aggiunto metodo per rimuovere un autore dal sistema
+    - AuthorController.java implementata tutta la logica per quanto riguarda la parte dedicata agli autori
+    - BookController.java passato al modello nel metodo getBook un attributo per permettere la visione della lista degli autori
+
 * [F-07/07/2025]: Changelog.txt : 
     - Cambiati metadati (Sezione title) di tutti i file html. 
 

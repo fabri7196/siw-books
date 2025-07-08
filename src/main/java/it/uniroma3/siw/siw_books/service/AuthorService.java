@@ -23,4 +23,8 @@ public class AuthorService {
     public Author saveAuthor(Author author) {
         return this.authorRepository.save(author);
     }
+
+    public void removeAuthor(Author author) {
+        this.authorRepository.delete(author);
+    }
 }

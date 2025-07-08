@@ -53,11 +53,11 @@ import javax.sql.DataSource;
                 .authorizeHttpRequests(requests -> requests
 //                .requestMatchers("/**").permitAll()
                         // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-                        .requestMatchers(HttpMethod.GET, "/", "/home", "/register", "/css/**", "/images/**", "/upload/**","/book/{id}", "/home/searchBooks").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/home", "/register", "/css/**", "/images/**", "/upload/**","/book/{id}", "/home/searchBooks", "/authors", "/author/{id}").permitAll()
                         // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                         .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/AllUsers").hasAnyAuthority(ADMIN_ROLE)
-                        .requestMatchers(HttpMethod.POST, "/users/delete/{userId}").hasAnyAuthority(ADMIN_ROLE)
+                        .requestMatchers(HttpMethod.GET, "/AllUsers", "/formNewBook", "/{id}/addAuthorsToBook").hasAnyAuthority(ADMIN_ROLE)
+                        .requestMatchers(HttpMethod.POST, "/users/delete/{userId}", "/addBook", "/book/{id}/remove", "/addAuthor").hasAnyAuthority(ADMIN_ROLE)
                         // tutti gli utenti autenticati possono accedere alle pagine rimanenti 
                         .anyRequest().authenticated()).formLogin(login -> login
                         .loginPage("/login")

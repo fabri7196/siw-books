@@ -5,14 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.siw_books.model.Author;
 import it.uniroma3.siw.siw_books.model.Book;
+import it.uniroma3.siw.siw_books.repository.AuthorRepository;
 import it.uniroma3.siw.siw_books.repository.BookRepository;
 
 @Service
 public class BookService {
 
+    @Autowired
+    private AuthorRepository authorRepository;
+
     @Autowired 
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
 
     public Book getBookById(Long id) {
         return this.bookRepository.findById(id).get();
@@ -37,6 +42,21 @@ public class BookService {
         // String searchTitleBook = title.substring(0, 1).toUpperCase().concat(title.substring(1).toLowerCase());
         // searchTitleBook = searchTitleBook.trim();
         return this.bookRepository.findAllByTitleIgnoreCase(title);
+    }
+
+    public Book addAuthorToBook(Book book, Author author) {
+        book.getAuthors().add(author);
+        author.getBooks().add(book);
+        this.authorRepository.save(author);
+        return this.saveBook(book);
+    }
+
+    public Book removedAuthorFromBook(Book book, Author author) {
+        book.getAuthors().remove(author);
+        author.getBooks().remove(book);
+
+        this.authorRepository.save(author);
+        return this.saveBook(book);
     }
     
 }

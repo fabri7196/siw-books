@@ -15,13 +15,22 @@
                     <li class="nav-item">
                         <a class="nav-link" th:classappend="${requestURI == '/home'} ? ' active' : ''" aria-current="page" th:href="@{/home}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:classappend="${requestURI == '/authors'} ? ' active' : ''" aria-current="page" th:href="@{/authors}">Autori</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" th:classappend="${requestURI == '/formNewBook'} ? ' active' : ''" role="button" data-bs-toggle="dropdown">
                             Operazioni
                         </a>
                         <ul class="dropdown-menu bg-dark">
-                            <li>
+                            <li th:if="${user != null and user.role == 'ADMIN'}">
                                 <a class="dropdown-item" th:href="@{/formNewBook}" style="--bs-dropdown-link-hover-bg: #198754; color: antiquewhite;">Aggiungi un libro</a>
+                            </li>
+                            <li th:if="${user != null and user.role == 'ADMIN'}">
+                                <a class="dropdown-item" th:href="@{/formNewAuthor}" style="--bs-dropdown-link-hover-bg: #198754; color: antiquewhite;">Aggiungi un autore</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="" style="--bs-dropdown-link-hover-bg: #198754; color: antiquewhite;">Visualizza le mie recensioni</a>
                             </li>
                         </ul>
                     </li>
@@ -38,8 +47,12 @@
                 </ul>
                 
                 <!-- Sezione destra (ricerca + profilo) -->
-                <form class="d-flex me-3" role="search" method="GET" th:action="@{/home/searchBooks}">
+                <form class="d-flex me-3" th:if="${requestURI == '/home'}" role="search" method="GET" th:action="@{/home/searchBooks}">
                     <input class="form-control me-2" type="search" name="title" placeholder="Inserisci titolo libro" aria-label="Search" />
+                    <button class="btn btn-outline-info" type="submit">Ricerca</button>
+                </form>
+                <form class="d-flex me-3 w-25" th:if="${requestURI == '/authors'}" role="search" method="GET" action="">
+                    <input class="form-control me-2" type="search" name="title" placeholder="Inserisci cognome autore" aria-label="Search" />
                     <button class="btn btn-outline-info" type="submit">Ricerca</button>
                 </form>
 
