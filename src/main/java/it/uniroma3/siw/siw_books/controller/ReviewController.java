@@ -1,5 +1,8 @@
 package it.uniroma3.siw.siw_books.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -14,6 +17,7 @@ import it.uniroma3.siw.siw_books.model.Review;
 import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.ReviewService;
+import it.uniroma3.siw.siw_books.service.UserService;
 
 @Controller
 public class ReviewController {
@@ -29,6 +33,9 @@ public class ReviewController {
 
     @Autowired
     private ReviewService reviewService;
+
+    @Autowired
+    private UserService userService;
     
     @GetMapping("/book/{id}/review")
     public String getFormReview(@PathVariable("id") Long id, Model model) {
@@ -70,5 +77,34 @@ public class ReviewController {
         
         return "redirect:/book/" + id;
     }
+
+    @GetMapping("/user/reviews")
+    public String getUserReviews(Model model) {
+        UserDetails userDetails = globalController.getUser();
+        List<Review> reviews = new ArrayList<>();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+            reviews = this.reviewService.findByAuthor(credentials.getUser());
+        }
+
+        model.addAttribute("nameUser", null);
+        model.addAttribute("reviews", reviews);
+        return "myReviews.html";
+    }
+
+    @GetMapping("/{id}/reviews")
+    public String getUserReviewsById(@PathVariable("id") Long id, Model model) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+        }
+        model.addAttribute("reviews", this.reviewService.findByAuthor(this.userService.getUser(id)));
+        model.addAttribute("nameUser", this.userService.getUser(id).getCredentials().getUsername());
+        return "myReviews.html";
+    }
+    
+    
     
 }

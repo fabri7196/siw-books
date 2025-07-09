@@ -41,7 +41,7 @@
                                 Modifica Password
                             </button>
                         </form>
-                        <form method="" 
+                        <form method="POST" th:action="@{/delete/currentUser}"
                             onsubmit="return confirm('Sei sicuro di voler cancellare l\'utente?');">
                             <button type="submit" class="btn btn-danger btn-lg px-4">
                                 Cancella Utente

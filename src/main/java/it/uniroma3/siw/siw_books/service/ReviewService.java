@@ -1,5 +1,7 @@
 package it.uniroma3.siw.siw_books.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +34,9 @@ public class ReviewService {
 
     public int countReview(Long idBook) {
         return this.reviewRepository.countReview(idBook);
+    }
+
+    public List<Review> findByAuthor(User user) {
+        return this.reviewRepository.findByAuthor(user);
     }
 }

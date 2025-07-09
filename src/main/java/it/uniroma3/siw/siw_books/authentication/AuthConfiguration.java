@@ -53,7 +53,7 @@ import javax.sql.DataSource;
                 .authorizeHttpRequests(requests -> requests
 //                .requestMatchers("/**").permitAll()
                         // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
-                        .requestMatchers(HttpMethod.GET, "/", "/home", "/register", "/css/**", "/images/**", "/upload/**","/book/{id}", "/home/searchBooks", "/authors", "/author/{id}").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/", "/home", "/register", "/css/**", "/images/**", "/upload/**","/book/{id}", "/home/searchBooks", "/authors", "/author/{id}", "/authors/searchAuthors").permitAll()
                         // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                         .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/AllUsers", "/formNewBook", "/{id}/addAuthorsToBook").hasAnyAuthority(ADMIN_ROLE)

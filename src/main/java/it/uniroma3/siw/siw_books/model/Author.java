@@ -3,6 +3,7 @@ package it.uniroma3.siw.siw_books.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Author {
     @Column(nullable = false)
     private String nationality;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private AssetImage photo;
     
     @ManyToMany

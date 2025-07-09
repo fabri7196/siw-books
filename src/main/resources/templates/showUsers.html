@@ -14,7 +14,7 @@
 
     <header th:replace="~{fragments/header :: header}"></header>
 
-    <main class="main-content container-fluid background-overlay p-2 min-vh-100 py-5">
+    <main class="main-content container-fluid background-overlay min-vh-100 py-3">
         <h2 class="mb-4">Elenco Utenti Registrati</h2>
 
         <div th:if="${#lists.isEmpty(users)}" class="alert alert-info">
@@ -41,7 +41,7 @@
                     <td class="bg-transparent" th:text="${user.email}">Email</td>
                     <td class="bg-transparent" th:text="${user.credentials.role}">Ruolo</td>
                     <td class="bg-transparent">
-                        <a href="" th:text="${numberReviews[__${stat.index}__]}" onmouseover="this.style.textDecoration='underline';" 
+                        <a th:href="@{'/' + ${user.id} + '/reviews'}" th:text="${numberReviews[__${stat.index}__]}" onmouseover="this.style.textDecoration='underline';" 
                             onmouseout="this.style.textDecoration='none';" style="text-decoration: none; color: black;">
                         </a>
                    </td>

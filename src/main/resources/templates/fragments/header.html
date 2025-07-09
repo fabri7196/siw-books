@@ -30,7 +30,7 @@
                                 <a class="dropdown-item" th:href="@{/formNewAuthor}" style="--bs-dropdown-link-hover-bg: #198754; color: antiquewhite;">Aggiungi un autore</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="" style="--bs-dropdown-link-hover-bg: #198754; color: antiquewhite;">Visualizza le mie recensioni</a>
+                                <a class="dropdown-item" th:href="@{/user/reviews}" style="--bs-dropdown-link-hover-bg: #198754; color: antiquewhite;">Visualizza le mie recensioni</a>
                             </li>
                         </ul>
                     </li>
@@ -51,8 +51,8 @@
                     <input class="form-control me-2" type="search" name="title" placeholder="Inserisci titolo libro" aria-label="Search" />
                     <button class="btn btn-outline-info" type="submit">Ricerca</button>
                 </form>
-                <form class="d-flex me-3 w-25" th:if="${requestURI == '/authors'}" role="search" method="GET" action="">
-                    <input class="form-control me-2" type="search" name="title" placeholder="Inserisci cognome autore" aria-label="Search" />
+                <form class="d-flex me-3 w-25" th:if="${requestURI == '/authors'}" role="search" method="GET" th:action="@{/authors/searchAuthors}">
+                    <input class="form-control me-2" type="search" name="surname" placeholder="Inserisci cognome autore" aria-label="Search" />
                     <button class="btn btn-outline-info" type="submit">Ricerca</button>
                 </form>
 

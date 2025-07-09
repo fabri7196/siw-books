@@ -1,3 +1,16 @@
+* [F-09/07/2025]: Changelog.txt, myReviews.html, header.html, userProfile.html, showUsers.html, 
+        ReviewController.java, ReviewRepository.java, ReviewService.java, Author.java e AuthConfiguration.java :
+    - Introdotta vista che permette a un utente di vedere le sue recensioni, all'ADMIN di vedere le recensioni 
+        degli altri
+    - header.html introdotta rotta per il dropdown-item visualizza le mie recensioni
+    - userProfile.html introdotta rotta per il bottone cancella utente
+    - showUsers.html introdotta rotta per l'ancora col numero delle recensioni
+    - ReviewController.java introdotta logica per vedere le recensioni di uno user (un metodo per gli utenti normali,
+        uno per gli ADMIN che permette in base all'id di un generico utente registrato di vedere le sue recensioni)
+    - ReviewRepository.java e ReviewService.java aggiunta findByAuthor
+    - Author.java introdotto evento in cascata, se rimosso utente viene rimossa anche la photo dal db
+    - AuthConfiguration.java aggiunte rotte ai permessi di tutti
+
 * [F-08/07/2025]: Changelog.txt, pom.xml, AuthConfiguration.java, header.html, formNewAuthor.html, authors.html, 
         author.html, book.html, BookService.java, AuthorService.java, AuthorController.java e BookController.java: 
     - Aggiunta dipendenza spring security extras
