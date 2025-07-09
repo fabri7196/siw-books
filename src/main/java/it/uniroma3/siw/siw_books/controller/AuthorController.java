@@ -34,11 +34,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AuthorController {
 
-    private final BookService bookService;
+    @Autowired
+    private BookService bookService;
 
     @Autowired
     private AuthorService authorService;
@@ -54,10 +56,6 @@ public class AuthorController {
 
     @Autowired
     private StorageProperties storageProperties;
-
-    AuthorController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @GetMapping("/authors")
     public String getAuthors(@RequestParam(name = "notFound", required = false) Boolean notFound, Model model) {
@@ -194,6 +192,18 @@ public class AuthorController {
 
         this.bookService.removedAuthorFromBook(book, this.authorService.getAuthorById(authorId));
         return "redirect:/" + bookId + "/addAuthorsToBook";
+    }
+
+    @GetMapping("/authors/searchAuthors")
+    public String getSearchAuthors(@RequestParam(name = "surname", required = false) String surname, RedirectAttributes redirectAttributes, Model model) {
+        List<Author> authors = this.authorService.getAuthorsBySurname(surname);
+        if(!authors.isEmpty()) {
+            model.addAttribute("authors", authors);
+            return "/authors";
+        }
+
+        redirectAttributes.addAttribute("notFound", true);
+        return "redirect:/authors";
     }
     
 

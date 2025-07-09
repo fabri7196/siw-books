@@ -1,4 +1,12 @@
-* [F-09/07/2025]: Changelog.txt, myReviews.html, header.html, userProfile.html, showUsers.html, 
+* [F-09/07/2025]: Changelog.txt, AuthorController.java, UserController.java, AuthorRepository.java,
+        AuthorService.java e CredentialsService.java : 
+    - AuthorController.java aggiunto metodo per la ricerca di un autore tramite la barra nella NAVBAR
+    - UserController.java implementato metodo per la cancellazione dell'utente stesso in sessione
+    - CredentialsService.java introdotto metodo per la cancellazione di un utente in base allo username
+    - AuthorService.java aggiunto metodo per la ricerca degli autori in base al cognome
+    - AuthorRepository.java implementata query per la ricerca dell'autore ignorando i caratteri maiuscoli e minuscoli
+
+myReviews.html, header.html, userProfile.html, showUsers.html, 
         ReviewController.java, ReviewRepository.java, ReviewService.java, Author.java e AuthConfiguration.java :
     - Introdotta vista che permette a un utente di vedere le sue recensioni, all'ADMIN di vedere le recensioni 
         degli altri

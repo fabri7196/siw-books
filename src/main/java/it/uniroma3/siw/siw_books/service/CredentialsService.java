@@ -37,4 +37,9 @@ public class CredentialsService {
         return this.credentialsRepository.save(credentials);
     }
 
+    @Transactional
+    public void deleteUser(String username){
+        Credentials credentials = this.credentialsRepository.findByUsername(username).get();
+        this.credentialsRepository.delete(credentials);
+    }
 }

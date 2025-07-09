@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import it.uniroma3.siw.siw_books.model.Credentials;
 import it.uniroma3.siw.siw_books.model.User;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -51,6 +54,20 @@ public class UserController {
         this.userService.deleteUser(id);
         return "redirect:/AllUsers";
     }
+
+    @PostMapping("delete/currentUser")
+    public String postDeleteCurrentUser(HttpServletRequest request) {
+        UserDetails userDetails = this.globalController.getUser();
+        Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
+
+        this.credentialsService.deleteUser(credentials.getUsername());
+
+        request.getSession().invalidate();
+        SecurityContextHolder.clearContext();
+
+        return "redirect:/";
+    }
+    
     
 
 }
