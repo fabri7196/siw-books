@@ -23,7 +23,7 @@
             <div class="col">
                 <div class="card shadow-sm border rounded p-3">
                     <h5 th:text="${review.title}" class="fw-bold mb-2">Titolo recensione</h5>
-                    <p th:text="${review.text}" class="mb-3">Testo recensione</p>
+                    <p th:text="${review.text}" class="mb-2">Testo recensione</p>
 
                     <!-- Stelle voto -->
                     <div class="mb-2">
@@ -41,7 +41,7 @@
                         </span>
                     </div>
 
-                    <p class="text-muted">
+                    <p class="text-muted m-0">
                         Libro: <a th:href="@{'/book/' + ${review.book.id}}" th:text="${review.book.title}"
                             class="text-decoration-none"></a>
                     </p>

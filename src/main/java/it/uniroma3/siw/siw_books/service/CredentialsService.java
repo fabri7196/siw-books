@@ -1,5 +1,7 @@
 package it.uniroma3.siw.siw_books.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,12 @@ public class CredentialsService {
 
     @Transactional
     public Credentials getCredentials(String username) {
-        return this.credentialsRepository.findByUsername(username).get();
+        Optional<Credentials> optionalCredentials = credentialsRepository.findByUsername(username);
+            if (optionalCredentials.isPresent()) {
+                Credentials credentials = optionalCredentials.get();
+                return credentials;
+            } 
+        return null;
     }
 
     @Transactional

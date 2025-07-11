@@ -58,5 +58,9 @@ public class BookService {
         this.authorRepository.save(author);
         return this.saveBook(book);
     }
+
+    public Book getBookByCode(Long code) {
+        return this.bookRepository.findByCode(code);
+    }
     
 }

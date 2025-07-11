@@ -13,5 +13,7 @@ import it.uniroma3.siw.siw_books.model.Book;
 public interface BookRepository extends CrudRepository<Book, Long> {
 
     @Query("SELECT b FROM Book b WHERE LOWER(b.title) = LOWER(:title)")
-    List<Book> findAllByTitleIgnoreCase(@Param("title") String title);
+    public List<Book> findAllByTitleIgnoreCase(@Param("title") String title);
+
+    public Book findByCode(Long code);
 }

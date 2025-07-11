@@ -18,6 +18,7 @@ import it.uniroma3.siw.siw_books.model.User;
 import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.UserService;
+import it.uniroma3.siw.siw_books.validator.CredentialsValidator;
 import jakarta.validation.Valid;
 
 
@@ -32,6 +33,9 @@ public class AuthenticationController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private CredentialsValidator credentialsValidator;
 
     @GetMapping("/")
     public String getWelcome(Model model) {
@@ -76,7 +80,7 @@ public class AuthenticationController {
 	}
 	
 	@GetMapping(value = "/login") 
-	public String getLoginForm (Model model) {
+	public String getLoginForm () {
 		return "formLogin.html";
 	}
 		
@@ -98,16 +102,20 @@ public class AuthenticationController {
         @ModelAttribute("credentials") Credentials credentials,
         BindingResult credentialsBindingResult,
         Model model) {
-
+        
+        this.credentialsValidator.validate(credentials, credentialsBindingResult);
+        
 		// se user e credential hanno entrambi contenuti validi, memorizza User e the Credentials nel DB
         if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
-            userService.saveUser(user);
+            this.userService.saveUser(user);
             credentials.setUser(user);
-            credentialsService.saveCredentials(credentials);
+            this.credentialsService.saveCredentials(credentials);
             model.addAttribute("user", credentials);
             return "registrationSuccess.html";
         }
-        return "/";
+        else {
+            return "formRegisterUser.html";
+        }
     }
     
     @GetMapping("/userProfile")

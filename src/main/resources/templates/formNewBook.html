@@ -25,20 +25,26 @@
                                 <label for="title" class="form-label" style="font-size: large;">Titolo</label>
                                 <input required type="text" class="form-control" id="title" placeholder="Titolo"
                                     th:field="${book.title}" />
+                                    <span th:if="${#fields.hasErrors('title')}" th:errors="${book.title}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="year" class="form-label" style="font-size: large;">Anno di pubblicazione</label>
-                                <input required type="text" class="form-control" id="year"
-                                    placeholder="Anno di pubblicazione" th:field="${book.year_publication}" />
+                                <input required type="number" class="form-control" id="year"
+                                    placeholder="Anno di pubblicazione" th:field="${book.year_publication}"/>
+                                <span th:if="${#fields.hasErrors('year_publication')}" th:errors="${book.year_publication}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="code" class="form-label" style="font-size: large;">Codice</label>
                                 <input required type="text" class="form-control" id="code" placeholder="Codice"
                                     th:field="${book.code}" />
+                                <span th:if="${#fields.hasErrors('code')}" th:errors="${book.code}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="images" class="form-label" style="font-size: large;">Immagini</label>
-                                <input type="file" class="form-control" id="images" multiple accept="image/*" name="files" />
+                                <input required type="file" class="form-control" id="images" multiple accept="image/*" name="files" />
+                                <div th:if="${#fields.hasGlobalErrors()}" style="color:red">
+                                    <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+                                </div>
                             </div>
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-light">Aggiungi libro</button>

@@ -31,29 +31,34 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nome</label>
                                 <input type="text" class="form-control" id="name" placeholder="Nome" required th:field="${user.name}">
+                                <span th:if="${#fields.hasErrors('user.name')}" th:errors="${user.name}" th:style="'color:red'">
                             </div>
                             <div class="mb-3">
                                 <label for="surname" class="form-label">Cognome</label>
                                 <input type="text" class="form-control" id="surname" placeholder="Cognome" required
                                     th:field="${user.surname}">
+                                <span th:if="${#fields.hasErrors('user.surname')}" th:errors="${user.surname}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <!-- type="email" -->
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" placeholder="Email" required th:field="${user.email}">
+                                <input type="email" class="form-control" id="email" placeholder="Email" required th:field="${user.email}">
+                                <span th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" placeholder="Username" required
                                     th:field="${credentials.username}">
+                                    <span th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" placeholder="Password" required
                                     th:field="${credentials.password}">
+                                <span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}" th:style="'color:red'"></span>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success w-50">Registrati</button>
+                                <button type="submit" class="btn btn-success w-50">Registra</button>
                             </div>
                         </form>
                     </div>

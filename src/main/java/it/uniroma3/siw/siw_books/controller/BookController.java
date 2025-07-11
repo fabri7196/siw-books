@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 
 import it.uniroma3.siw.siw_books.model.AssetImage;
 import it.uniroma3.siw.siw_books.model.Book;
@@ -25,6 +27,8 @@ import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.ReviewService;
 import it.uniroma3.siw.siw_books.storage.StorageProperties;
+import it.uniroma3.siw.siw_books.validator.BookValidator;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,6 +59,9 @@ public class BookController {
     @Autowired
     private ReviewService reviewService;
 
+    @Autowired
+    private BookValidator bookValidator;
+
     @GetMapping("/formNewBook")
 	public String formNewBook(Model model) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -70,38 +77,51 @@ public class BookController {
 	}
 
     @PostMapping("/addBook")
-	public String addBook(@ModelAttribute("book") Book book, @RequestParam("files") List<MultipartFile> files, Model model) throws IOException{
+	public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, @RequestParam("files") List<MultipartFile> files, Model model) throws IOException{
         
         UserDetails userDetails = globalController.getUser();
         if (userDetails != null) {
             Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
             model.addAttribute("user", credentials);
         }
-        this.bookService.saveBook(book);
 
-        List<AssetImage> listAssetImage = new ArrayList<>();
+        this.bookValidator.validate(book, bindingResult);
 
-        for (MultipartFile file : files) {
-            if (!file.isEmpty()) {
-                String filename = StringUtils.cleanPath(file.getOriginalFilename());
-                Path bookDir = Paths.get(storageProperties.getLocation(), String.valueOf(book.getId()));
-                Files.createDirectories(bookDir);
-                Path filePath = bookDir.resolve(filename);
-                Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+        if(!bindingResult.hasErrors()) {
+       
+            this.bookService.saveBook(book);
+
+            List<AssetImage> listAssetImage = new ArrayList<>();
+
+            List<String> allowedTypes = Arrays.asList("image/jpeg", "image/png", "image/gif", "image/webp");
+            for (MultipartFile file : files) {
+                if (!file.isEmpty()) {
+                    String contentType = file.getContentType();
+                        if (!allowedTypes.contains(contentType)) {
+                            bindingResult.reject("files.invalidType", "Solo file immagine sono ammessi");
+                            return "formNewBook.html";
+                        }
+                    String filename = StringUtils.cleanPath(file.getOriginalFilename());
+                    Path bookDir = Paths.get(storageProperties.getLocation(), String.valueOf(book.getId()));
+                    Files.createDirectories(bookDir);
+                    Path filePath = bookDir.resolve(filename);
+                    Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
                 
-                AssetImage assetImage = new AssetImage();
-                String publicPath = "/upload/" + book.getId() + "/" + filename;
-                assetImage.setPath(publicPath);
-                AssetImage assetImageBook = this.assetImageService.saveImage(assetImage);
+                    AssetImage assetImage = new AssetImage();
+                    String publicPath = "/upload/" + book.getId() + "/" + filename;
+                    assetImage.setPath(publicPath);
+                    AssetImage assetImageBook = this.assetImageService.saveImage(assetImage);
                 
-                listAssetImage.add(assetImageBook);
+                    listAssetImage.add(assetImageBook);
+                }
             }
-        }
 
-        book.setCovers(listAssetImage);
-        this.bookService.saveBook(book);
-        
-        return "redirect:/book/" + book.getId();
+            book.setCovers(listAssetImage);
+            this.bookService.saveBook(book);
+
+            return "redirect:/book/" + book.getId();
+        }
+        return "formNewBook.html";
 	}
 
     @PostMapping("/book/{id}/remove")

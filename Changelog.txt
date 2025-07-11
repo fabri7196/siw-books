@@ -1,3 +1,18 @@
+* [F-11/07/2025]: Changelog.txt, formLogin.html, formNewBook.html, formRegisterUser.html, book.html, BookValidator.java, CredentialsValidator.java,
+            Credentials.java, Book.java, AuthenticationController.java, BookController.java, messages.properties,
+            BookRepository.java, BookService.java e CredentialsService.java : 
+    - formLogin.html, formNewBook.html, formRegisterUser.html aggiunte sezioni per gestione errori
+    - book.html resa scrollabile la sezione delle recensioni 
+    - BookValidator.java e CredentialsValidator.java introdotte per la validazione dei dati
+    - Credentials.java validazione dati ultimata
+    - Book.java validazione dati ultimata e campo year_pubblication reso INT
+    - AuthenticationController.java implementata logica per la validazione nella formRegisterUser
+    - BookController.java implementata logica per la validazione nella formNewBook
+    - messages.properties aggiunti messaggi di errore
+    - BookRepository.java aggiunta findByCode
+    - BookService.java aggiunta getBookByCode
+    - CredentialsService.java modificata la getCredentials
+
 * [F-09/07/2025]: Changelog.txt, AuthorController.java, UserController.java, AuthorRepository.java,
         AuthorService.java e CredentialsService.java : 
     - AuthorController.java aggiunto metodo per la ricerca di un autore tramite la barra nella NAVBAR

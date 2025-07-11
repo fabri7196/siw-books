@@ -62,8 +62,8 @@ import javax.sql.DataSource;
                         .anyRequest().authenticated()).formLogin(login -> login
                         .loginPage("/login")
                         .permitAll()
-                        .defaultSuccessUrl("/home")
-                        .failureUrl("/login?error=true"))
+                        .defaultSuccessUrl("/home") 
+                        .failureUrl("/login?error=true"))   
                         .logout(logout -> logout
                         // il logout è attivato con una richiesta GET a "/logout"
                         .logoutUrl("/logout")

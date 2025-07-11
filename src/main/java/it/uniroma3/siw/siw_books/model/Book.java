@@ -13,6 +13,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @SequenceGenerator(initialValue = 1, name = "seq_idBook", allocationSize = 1)
@@ -22,14 +26,17 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_idBook")
     private Long id;
 
-    @Column(unique = true)
+    @NotNull
     private Long code;
     
     @Column(nullable = false)
+    @NotBlank
     private String title;
     
     @Column(nullable = false)
-    private Year year_publication;
+    @Min(1500)
+    @Max(2025)
+    private int year_publication;
     
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
@@ -55,10 +62,10 @@ public class Book {
         this.title = title;
     }
     
-    public Year getYear_publication() {
+    public int getYear_publication() {
         return year_publication;
     }
-    public void setYear_publication(Year year_publication) {
+    public void setYear_publication(int year_publication) {
         this.year_publication = year_publication;
     }
     

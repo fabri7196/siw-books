@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @SequenceGenerator(allocationSize = 1, initialValue = 2, name = "seq_credId")
@@ -26,6 +27,7 @@ public class Credentials {
     private String username;
     
     @NotBlank
+    @Size(min = 8, message = "La password deve contenere almeno 8 caratteri.")
     private String password;
 
     private String role;
@@ -92,5 +94,5 @@ public class Credentials {
             return false;
         return true;
     }
-    
+
 }
