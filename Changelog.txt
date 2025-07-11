@@ -1,3 +1,11 @@
+* [F-11/07/2025]: Changelog.txt, ChangePasswordForm.java, ChangePasswordFormValidator.java, AuthenticationController.java,
+        changePass.html, messages.properties : 
+    - messages.properties settati messaggi di errore per la pagina modifica password
+    - changePass.html aggiunte sezioni per mostrare gli errori 
+    - AuthenticationController.java implementata logica per gestire errori nella form per il cambio password
+    - ChangePasswordForm.java e ChangePasswordFormValidator.java aggiunto dto per impacchettare la vecchia,nuova e conferma nuova
+        password in un oggetto. Per semplificare la form e aggiungere gli errori ed il validator.
+
 * [F-11/07/2025]: Changelog.txt, messages.properties, Author.java, formNewAuthor.html, AuthorController.java,
         AuthorValidator.java, AuthorRepository.java e AuthorService.java
     - messages.properties aggiunti nuovi messaggi di errore
@@ -5,7 +13,7 @@
     - formNewAuthor.html aggiunte sezioni per gestire errori
     - AuthorController.java implementata logica per validazione dati
     - AuthorValidator.java introdotta per la validazione dei dati
-    - AuthorRepository.java e AuthorService.java aggiunta la ricerca per nome, cognome e anno di nascita
+    - AuthorRepository.java e AuthorService.java aggiunta la ricerca per nome, cognome e anno di
 
 * [F-11/07/2025]: Changelog.txt, formLogin.html, formNewBook.html, formRegisterUser.html, book.html, BookValidator.java, CredentialsValidator.java,
             Credentials.java, Book.java, AuthenticationController.java, BookController.java, messages.properties,

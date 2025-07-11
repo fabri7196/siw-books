@@ -16,24 +16,36 @@
 
     <div class="container-fluid background-overlay min-vh-100">
         <div class="d-flex justify-content-center align-items-center min-vh-100">
-            <form th:action="@{/userProfile/changePass/success}" method="POST" class="bg-dark text-white p-5 rounded shadow"
-                style="max-width: 400px; width: 100%;">
+            <form th:action="@{/userProfile/changePass/success}" method="POST" th:object="${ChangePasswordForm}"
+                class="bg-dark text-white p-5 rounded shadow" style="max-width: 400px; width: 100%;">
                 <h3 class="mb-4 text-center">Cambia Password</h3>
 
                 <div class="mb-3">
                     <label for="oldPassword" class="form-label">Vecchia Password</label>
-                    <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="vecchia password" required>
+                    <input type="password" class="form-control" id="oldPassword" name="oldPassword"
+                        placeholder="vecchia password" required th:field="${ChangePasswordForm.oldPassword}">
+                        <span th:if="${#fields.hasErrors('oldPassword')}" th:errors="${ChangePasswordForm.oldPassword}" th:style="'color:red'"></span>
                 </div>
 
                 <div class="mb-3">
                     <label for="newPassword" class="form-label">Nuova Password</label>
-                    <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="nuova password" required>
+                    <input type="password" class="form-control" id="newPassword" name="newPassword"
+                        placeholder="nuova password" required th:field="${ChangePasswordForm.newPassword}">
+                        <span th:if="${#fields.hasErrors('newPassword')}" th:errors="${ChangePasswordForm.newPassword}" th:style="'color:red'"></span>
                 </div>
 
                 <div class="mb-4">
                     <label for="confirmNewPassword" class="form-label">Conferma Nuova Password</label>
-                    <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" placeholder="ripeti nuova password"
-                        required>
+                    <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword"
+                        placeholder="ripeti nuova password" required
+                        th:field="${ChangePasswordForm.confirmNewPassword}">
+                <span th:if="${#fields.hasErrors('newPassword')}" th:errors="${ChangePasswordForm.confirmNewPassword}" th:style="'color:red'"></span>
+                </div>
+
+                <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
+                    <ul>
+                        <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+                    </ul>
                 </div>
 
                 <div class="d-grid">
