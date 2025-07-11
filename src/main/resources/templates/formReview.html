@@ -33,14 +33,16 @@
             <div class="mb-3">
                 <label for="title" class="form-label" style="font-size: x-large;"><strong>Titolo</strong></label>
                 <input type="text" class="form-control" id="title" th:field="${review.title}" placeholder="Titolo" required>
+                <span th:if="${#fields.hasErrors('title')}" th:errors="${review.title}" th:style="'color:red'"></span>
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label" style="font-size: x-large;"><strong>Testo</strong></label>
                 <textarea class="form-control" id="content" th:field="${review.text}" rows="4" placeholder="Scrivi qui la tua recensione!" required></textarea>
+                <span th:if="${#fields.hasErrors('text')}" th:errors="${review.text}" th:style="'color:red'"></span>
             </div>
             
             <label style="font-size: x-large; padding-bottom: 2px;"><strong>Valutazione:</strong></label>
-            <div class="star-rating" style="margin-bottom: 30px;">
+            <div class="star-rating">
                 <span class="fa fa-star" data-value="1"></span>
                 <span class="fa fa-star" data-value="2"></span>
                 <span class="fa fa-star" data-value="3"></span>
@@ -48,6 +50,7 @@
                 <span class="fa fa-star" data-value="5"></span>
             </div>
             <input type="hidden" th:field="*{vote}" id="voteInput" required min="1" max="5">
+            <span th:if="${#fields.hasErrors('vote')}" th:errors="${review.vote}" th:style="'color:red'"></span>
 
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-light">Invia Recensione</button>

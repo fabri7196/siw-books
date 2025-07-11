@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @SequenceGenerator(allocationSize = 1, initialValue = 1, name = "seq_idReview")
@@ -20,14 +21,14 @@ public class Review {
     private Long id;
     
     @Column(nullable = false)
+    @NotBlank
     private String title;
     
     @Column(nullable = false)
-    @Min(1)
-    @Max(5)
     private int vote;
     
     @Column(nullable = false, length = 1000)
+    @NotBlank
     private String text;
 
     @ManyToOne

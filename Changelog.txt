@@ -1,3 +1,6 @@
+* [F-11/07/2025]: Changelog.txt, messages.properties, Review.java, ReviewController.java, formReview.html : 
+    - Gestita la validazione dati per la form di una nuova recensione. 
+
 * [F-11/07/2025]: Changelog.txt, ChangePasswordForm.java, ChangePasswordFormValidator.java, AuthenticationController.java,
         changePass.html, messages.properties : 
     - messages.properties settati messaggi di errore per la pagina modifica password
