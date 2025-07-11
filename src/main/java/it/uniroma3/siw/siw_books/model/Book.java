@@ -1,6 +1,5 @@
 package it.uniroma3.siw.siw_books.model;
 
-import java.time.Year;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;

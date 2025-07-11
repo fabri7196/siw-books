@@ -1,5 +1,6 @@
 package it.uniroma3.siw.siw_books.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,14 @@ public class AuthorService {
 
     public void removeAuthor(Author author) {
         this.authorRepository.delete(author);
+    }
+
+    public List<Author> findAllByNameAndSurnameAndDateOfBirth(String name, String surname, LocalDate birth) {
+        List<Author> list = this.authorRepository.findAllByNameAndSurnameAndDateOfBirth(name.trim(), surname.trim(), birth);
+        if (list.isEmpty() || list == null) {
+            return List.of();
+        }
+        
+        return list;
     }
 }

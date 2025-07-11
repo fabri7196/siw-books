@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 
 import it.uniroma3.siw.siw_books.model.AssetImage;
 import it.uniroma3.siw.siw_books.model.Author;
@@ -27,6 +29,8 @@ import it.uniroma3.siw.siw_books.service.AuthorService;
 import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.storage.StorageProperties;
+import it.uniroma3.siw.siw_books.validator.AuthorValidator;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,6 +48,9 @@ public class AuthorController {
 
     @Autowired
     private AuthorService authorService;
+
+    @Autowired
+    private AuthorValidator authorValidator;
 
     @Autowired
     private CredentialsService credentialsService;
@@ -95,7 +102,8 @@ public class AuthorController {
     }
 
     @PostMapping("/addAuthor")
-    public String addAuthor(@ModelAttribute("author") Author author, @RequestParam("file") MultipartFile file,
+    public String addAuthor(@Valid @ModelAttribute("author") Author author, BindingResult bindingResult,
+            @RequestParam("file") MultipartFile file,
             Model model) throws IOException {
 
         UserDetails userDetails = globalController.getUser();
@@ -104,11 +112,22 @@ public class AuthorController {
             model.addAttribute("user", credentials);
         }
 
-        this.authorService.saveAuthor(author);
+        this.authorValidator.validate(author, bindingResult);
 
         if (file != null) {
+            List<String> allowedTypes = Arrays.asList("image/jpeg", "image/png", "image/gif", "image/webp");
+            String contentType = file.getContentType();
+            if (!allowedTypes.contains(contentType)) {
+                bindingResult.reject("files.invalidType", "Solo file immagine sono ammessi");
+            }
+        }
+
+        if (!bindingResult.hasErrors()) {
+            this.authorService.saveAuthor(author);
+
             String filename = StringUtils.cleanPath(file.getOriginalFilename());
-            Path authorDir = Paths.get(storageProperties.getLocation() + "/authors", String.valueOf(author.getId()));
+            Path authorDir = Paths.get(storageProperties.getLocation() + "/authors",
+                    String.valueOf(author.getId()));
             Files.createDirectories(authorDir);
             Path filePath = authorDir.resolve(filename);
             Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
@@ -119,12 +138,12 @@ public class AuthorController {
             AssetImage assetImageAuthor = this.assetImageService.saveImage(assetImage);
 
             author.setPhoto(assetImageAuthor);
+
+            this.authorService.saveAuthor(author);
+            return "redirect:/author/" + author.getId();
         }
 
-        this.authorService.saveAuthor(author);
-
-        return "redirect:/authors";
-        // return "redirect:/authors/" + author.getId();
+        return "formNewAuthor.html";
     }
 
     @GetMapping("/author/{id}")
@@ -136,7 +155,7 @@ public class AuthorController {
             model.addAttribute("user", credentials);
         }
         model.addAttribute("author", author);
-        
+
         return "author.html";
     }
 
@@ -145,15 +164,17 @@ public class AuthorController {
         Path folderPath = Paths.get("siw-books/upload/authors", String.valueOf(id));
         try {
             FileSystemUtils.deleteRecursively(folderPath);
-        } catch (IOException e) {}
+        } catch (IOException e) {
+        }
 
         this.authorService.removeAuthor(this.authorService.getAuthorById(id));
-        
+
         return "redirect:/authors";
     }
-    
+
     @GetMapping("/{id}/addAuthorsToBook")
-    public String getAddAuthorToBook(@RequestParam(name = "notFound", required = false) Boolean notFound, @PathVariable("id") Long bookId, Model model) {
+    public String getAddAuthorToBook(@RequestParam(name = "notFound", required = false) Boolean notFound,
+            @PathVariable("id") Long bookId, Model model) {
         model.addAttribute("requestURI", "/" + bookId + "/addAuthorsToBook");
 
         if (Boolean.TRUE.equals(notFound)) {
@@ -177,15 +198,15 @@ public class AuthorController {
     @PostMapping("/{id}/{aid}/addedAuthorToBook")
     public String postAddedAuthorToBook(@PathVariable("id") Long bookId, @PathVariable("aid") Long authorId) {
         Book book = this.bookService.getBookById(bookId);
-        if(book.getAuthors() == null) {
+        if (book.getAuthors() == null) {
             List<Author> authors = new ArrayList<>();
             book.setAuthors(authors);
         }
-        
+
         this.bookService.addAuthorToBook(book, this.authorService.getAuthorById(authorId));
         return "redirect:/" + bookId + "/addAuthorsToBook";
     }
-    
+
     @PostMapping("/{id}/{aid}/removedAuthorFromBook")
     public String postRemovedAuthorFromBook(@PathVariable("id") Long bookId, @PathVariable("aid") Long authorId) {
         Book book = this.bookService.getBookById(bookId);
@@ -195,9 +216,10 @@ public class AuthorController {
     }
 
     @GetMapping("/authors/searchAuthors")
-    public String getSearchAuthors(@RequestParam(name = "surname", required = false) String surname, RedirectAttributes redirectAttributes, Model model) {
+    public String getSearchAuthors(@RequestParam(name = "surname", required = false) String surname,
+            RedirectAttributes redirectAttributes, Model model) {
         List<Author> authors = this.authorService.getAuthorsBySurname(surname);
-        if(!authors.isEmpty()) {
+        if (!authors.isEmpty()) {
             model.addAttribute("authors", authors);
             return "/authors";
         }
@@ -205,6 +227,5 @@ public class AuthorController {
         redirectAttributes.addAttribute("notFound", true);
         return "redirect:/authors";
     }
-    
 
 }

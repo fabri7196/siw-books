@@ -1,3 +1,12 @@
+* [F-11/07/2025]: Changelog.txt, messages.properties, Author.java, formNewAuthor.html, AuthorController.java,
+        AuthorValidator.java, AuthorRepository.java e AuthorService.java
+    - messages.properties aggiunti nuovi messaggi di errore
+    - Author.java aggiunte annotazioni per validazione
+    - formNewAuthor.html aggiunte sezioni per gestire errori
+    - AuthorController.java implementata logica per validazione dati
+    - AuthorValidator.java introdotta per la validazione dei dati
+    - AuthorRepository.java e AuthorService.java aggiunta la ricerca per nome, cognome e anno di nascita
+
 * [F-11/07/2025]: Changelog.txt, formLogin.html, formNewBook.html, formRegisterUser.html, book.html, BookValidator.java, CredentialsValidator.java,
             Credentials.java, Book.java, AuthenticationController.java, BookController.java, messages.properties,
             BookRepository.java, BookService.java e CredentialsService.java : 

@@ -20,36 +20,56 @@
                         <div class="card-header text-center mb-4" style="background-color: white;">
                             <h2 class="card-title text-center mb-4">Aggiungi un nuovo autore</h2>
                         </div>
-                        <form method="POST" th:action="@{/addAuthor}" th:object="${author}" enctype="multipart/form-data">
+                        <form method="POST" th:action="@{/addAuthor}" th:object="${author}"
+                            enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="name" class="form-label" style="font-size: large;">Nome</label>
                                 <input required type="text" class="form-control" id="name" placeholder="Nome"
                                     th:field="${author.name}" />
+                                <span th:if="${#fields.hasErrors('name')}" th:errors="${author.name}"
+                                    th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="surname" class="form-label" style="font-size: large;">Cognome</label>
-                                <input required type="text" class="form-control" id="surname"
-                                    placeholder="Cognome" th:field="${author.surname}" />
+                                <input required type="text" class="form-control" id="surname" placeholder="Cognome"
+                                    th:field="${author.surname}" />
+                                <span th:if="${#fields.hasErrors('surname')}" th:errors="${author.surname}"
+                                    th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
-                                <label for="birthday" class="form-label" style="font-size: large;">Data di nascita</label>
-                                <input required type="date" class="form-control" id="birthday" placeholder="Data di nascita"
-                                    th:field="${author.dateOfBirth}" />
+                                <label for="birthday" class="form-label" style="font-size: large;">Data di
+                                    nascita</label>
+                                <input required type="date" class="form-control" id="birthday"
+                                    placeholder="Data di nascita" th:field="${author.dateOfBirth}" th:attr="max=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" />
+                                <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="${author.dateOfBirth}"
+                                    th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
-                                <label for="death" class="form-label" style="font-size: large;">Data di morte (opzionale)</label>
+                                <label for="death" class="form-label" style="font-size: large;">Data di morte
+                                    (opzionale)</label>
                                 <input type="date" class="form-control" id="death" placeholder="Data di morte"
-                                    th:field="${author.dateOfDeath}" />
+                                    th:field="${author.dateOfDeath}" th:attr="max=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
+                                <span th:if="${#fields.hasErrors('dateOfDeath')}" th:errors="${author.dateOfDeath}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
-                                <label for="nationality" class="form-label" style="font-size: large;">Nazionalità</label>
-                                <input required type="text" class="form-control" id="nationality" placeholder="Nazionalità"
-                                    th:field="${author.nationality}" />
+                                <label for="nationality" class="form-label"
+                                    style="font-size: large;">Nazionalità</label>
+                                <input required type="text" class="form-control" id="nationality"
+                                    placeholder="Nazionalità" th:field="${author.nationality}" />
+                                <span th:if="${#fields.hasErrors('nationality')}" th:errors="${author.nationality}"
+                                    th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="images" class="form-label" style="font-size: large;">Foto</label>
-                                <input type="file" class="form-control" id="images" accept="image/*" name="file" />
+                                <input required type="file" class="form-control" id="images" accept="image/*" name="file" />
                             </div>
+
+                            <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
+                                <ul>
+                                    <li th:each="err : ${#fields.globalErrors()}" th:text="${err}"></li>
+                                </ul>
+                            </div>
+
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-light">Aggiungi autore</button>
                             </div>

@@ -25,12 +25,12 @@ public class BookValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Book book = (Book) target;
 
-        //A parità di titolo, per essere uguale deve avere lo stesso anno e codice
+        //A parità di titolo, per essere uguale deve avere lo stesso anno
         if ((!this.bookService.getBooksByTitle(book.getTitle()).isEmpty())) {
             List<Book> list = this.bookService.getBooksByTitle(book.getTitle());
             for (Book li : list) {
-                if ((li.getYear_publication() == book.getYear_publication()) && li.getCode() == book.getCode()) {
-                    errors.rejectValue("title", "book.duplicato");
+                if ((li.getYear_publication() == book.getYear_publication())) {
+                    errors.reject("book.duplicato");
                     break;
                 }
             }

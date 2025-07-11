@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @SequenceGenerator(initialValue = 1, allocationSize = 1, name = "seq_idAuthor")
@@ -22,17 +24,21 @@ public class Author {
     private Long id;
     
     @Column(nullable = false)
+    @NotBlank
     private String name;
    
     @Column(nullable = false)
+    @NotBlank
     private String surname;
    
     @Column(nullable = false)
+    @NotNull
     private LocalDate dateOfBirth;
     
     private LocalDate dateOfDeath;
     
     @Column(nullable = false)
+    @NotBlank
     private String nationality;
     
     @OneToOne(cascade = CascadeType.REMOVE)
