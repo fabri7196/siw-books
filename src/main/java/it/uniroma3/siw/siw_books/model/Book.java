@@ -40,7 +40,7 @@ public class Book {
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
     private List<Review> reviews;
 
     @OneToMany(cascade = CascadeType.REMOVE)
