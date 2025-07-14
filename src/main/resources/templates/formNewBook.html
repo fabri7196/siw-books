@@ -30,7 +30,7 @@
                             <div class="mb-3">
                                 <label for="year" class="form-label" style="font-size: large;">Anno di pubblicazione</label>
                                 <input required type="number" class="form-control" id="year"
-                                    placeholder="Anno di pubblicazione" th:field="${book.year_publication}"/>
+                                    placeholder="Anno di pubblicazione" th:field="${book.year_publication}" pattern="\d{4}"/>
                                 <span th:if="${#fields.hasErrors('year_publication')}" th:errors="${book.year_publication}" th:style="'color:red'"></span>
                             </div>
                             <div class="mb-3">

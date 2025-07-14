@@ -35,7 +35,7 @@ public class Book {
     @Column(nullable = false)
     @Min(1500)
     @Max(2025)
-    private int year_publication;
+    private Integer year_publication;
     
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
@@ -61,10 +61,10 @@ public class Book {
         this.title = title;
     }
     
-    public int getYear_publication() {
+    public Integer getYear_publication() {
         return year_publication;
     }
-    public void setYear_publication(int year_publication) {
+    public void setYear_publication(Integer year_publication) {
         this.year_publication = year_publication;
     }
     

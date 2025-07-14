@@ -1,3 +1,9 @@
+* [F-14/07/2025]: 
+    - PROGETTO COMPLETO
+    - Spostatati validator in controller/validator
+    - formNewBook sistemato placeholder anno di pubblicazione
+    - BookController.java aggiunta libro, spostata creazione directory fuori dal ciclo for, più immagini creavano più directory
+
 * [F-12/07/2025]: 
     - PROGETTO COMPLETO
 

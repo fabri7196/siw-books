@@ -29,7 +29,7 @@ import it.uniroma3.siw.siw_books.service.AuthorService;
 import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.storage.StorageProperties;
-import it.uniroma3.siw.siw_books.validator.AuthorValidator;
+import it.uniroma3.siw.siw_books.controller.validator.AuthorValidator;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;

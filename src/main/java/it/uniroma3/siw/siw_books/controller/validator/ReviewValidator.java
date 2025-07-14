@@ -1,4 +1,4 @@
-package it.uniroma3.siw.siw_books.validator;
+package it.uniroma3.siw.siw_books.controller.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

@@ -27,7 +27,7 @@ import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.ReviewService;
 import it.uniroma3.siw.siw_books.storage.StorageProperties;
-import it.uniroma3.siw.siw_books.validator.BookValidator;
+import it.uniroma3.siw.siw_books.controller.validator.BookValidator;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -91,6 +91,9 @@ public class BookController {
        
             this.bookService.saveBook(book);
 
+            Path bookDir = Paths.get(storageProperties.getLocation(), String.valueOf(book.getId()));
+            Files.createDirectories(bookDir);
+
             List<AssetImage> listAssetImage = new ArrayList<>();
 
             List<String> allowedTypes = Arrays.asList("image/jpeg", "image/png", "image/gif", "image/webp");
@@ -102,8 +105,6 @@ public class BookController {
                             return "formNewBook.html";
                         }
                     String filename = StringUtils.cleanPath(file.getOriginalFilename());
-                    Path bookDir = Paths.get(storageProperties.getLocation(), String.valueOf(book.getId()));
-                    Files.createDirectories(bookDir);
                     Path filePath = bookDir.resolve(filename);
                     Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
                 

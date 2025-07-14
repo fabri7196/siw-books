@@ -19,8 +19,8 @@ import it.uniroma3.siw.siw_books.model.User;
 import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.UserService;
-import it.uniroma3.siw.siw_books.validator.ChangePasswordFormValidator;
-import it.uniroma3.siw.siw_books.validator.CredentialsValidator;
+import it.uniroma3.siw.siw_books.controller.validator.ChangePasswordFormValidator;
+import it.uniroma3.siw.siw_books.controller.validator.CredentialsValidator;
 import jakarta.validation.Valid;
 
 @Controller

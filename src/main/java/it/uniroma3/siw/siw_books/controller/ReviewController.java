@@ -20,7 +20,7 @@ import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.ReviewService;
 import it.uniroma3.siw.siw_books.service.UserService;
-import it.uniroma3.siw.siw_books.validator.ReviewValidator;
+import it.uniroma3.siw.siw_books.controller.validator.ReviewValidator;
 import jakarta.validation.Valid;
 
 @Controller
