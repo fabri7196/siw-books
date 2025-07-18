@@ -114,7 +114,7 @@ public class AuthenticationController {
         if (!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
             this.userService.saveUser(user);
             credentials.setUser(user);
-            this.credentialsService.saveCredentials(credentials);
+            this.credentialsService.saveCredentials(credentials,Credentials.DEFAULT_ROLE);
             model.addAttribute("user", credentials);
             return "registrationSuccess.html";
         } else {
@@ -155,7 +155,7 @@ public class AuthenticationController {
         }
 
         credentials.setPassword(form.getNewPassword());
-        credentialsService.saveCredentials(credentials);
+        credentialsService.saveCredentials(credentials, credentials.getRole());
 
         return "confirmChangePass.html";
     }

@@ -1,3 +1,7 @@
+* [F-18/07/2025]: AuthenticationController.java e CredentialsService.java :
+    - CredentialsService.java modificato il save credentials, perchè quando aggiornavo la password di un ADMIN
+        riveniva settato il ruole DEFAULT
+
 * [F-14/07/2025]: 
     - PROGETTO COMPLETO
     - Spostatati validator in controller/validator
