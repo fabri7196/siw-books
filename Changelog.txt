@@ -1,3 +1,6 @@
+* [F-20/07/2025]: UserController.java : 
+    - Nuovo fix per il cambio password/ruolo utente
+
 * [F-20/07/2025]: formNewRegisterUser, formLogin, changePass : 
     - Rimosso autocompilamento per il campo password.
 
