@@ -54,7 +54,7 @@
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" placeholder="Password" required
-                                    th:field="${credentials.password}">
+                                    th:field="${credentials.password}" autocomplete="off">
                                 <span th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}" th:style="'color:red'"></span>
                             </div>
                             <div class="d-flex justify-content-center">

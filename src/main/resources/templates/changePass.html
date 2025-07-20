@@ -23,14 +23,14 @@
                 <div class="mb-3">
                     <label for="oldPassword" class="form-label">Vecchia Password</label>
                     <input type="password" class="form-control" id="oldPassword" name="oldPassword"
-                        placeholder="vecchia password" required th:field="${ChangePasswordForm.oldPassword}">
+                        placeholder="vecchia password" required th:field="${ChangePasswordForm.oldPassword}" autocomplete="off">
                         <span th:if="${#fields.hasErrors('oldPassword')}" th:errors="${ChangePasswordForm.oldPassword}" th:style="'color:red'"></span>
                 </div>
 
                 <div class="mb-3">
                     <label for="newPassword" class="form-label">Nuova Password</label>
                     <input type="password" class="form-control" id="newPassword" name="newPassword"
-                        placeholder="nuova password" required th:field="${ChangePasswordForm.newPassword}">
+                        placeholder="nuova password" required th:field="${ChangePasswordForm.newPassword}" autocomplete="off">
                         <span th:if="${#fields.hasErrors('newPassword')}" th:errors="${ChangePasswordForm.newPassword}" th:style="'color:red'"></span>
                 </div>
 
@@ -38,7 +38,7 @@
                     <label for="confirmNewPassword" class="form-label">Conferma Nuova Password</label>
                     <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword"
                         placeholder="ripeti nuova password" required
-                        th:field="${ChangePasswordForm.confirmNewPassword}">
+                        th:field="${ChangePasswordForm.confirmNewPassword}" autocomplete="off">
                 <span th:if="${#fields.hasErrors('newPassword')}" th:errors="${ChangePasswordForm.confirmNewPassword}" th:style="'color:red'"></span>
                 </div>
 
