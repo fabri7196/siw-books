@@ -1,3 +1,7 @@
+* [F-20/07/2025]: AuthenticationController.java, UserController.java : 
+    - Spostati metodi gestio profilo, cambio password da AuthenticationController
+        a UserController.
+
 * [F-18/07/2025]: AuthenticationController.java e CredentialsService.java :
     - CredentialsService.java modificato il save credentials, perchè quando aggiornavo la password di un ADMIN
         riveniva settato il ruole DEFAULT
