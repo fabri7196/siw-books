@@ -28,6 +28,8 @@ import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.service.ReviewService;
 import it.uniroma3.siw.siw_books.storage.StorageProperties;
 import it.uniroma3.siw.siw_books.controller.validator.BookValidator;
+import it.uniroma3.siw.siw_books.controller.validator.UpdateBookValidator;
+import it.uniroma3.siw.siw_books.dto.UpdateBook;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +39,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class BookController {
@@ -61,6 +65,9 @@ public class BookController {
 
     @Autowired
     private BookValidator bookValidator;
+
+    @Autowired
+    private UpdateBookValidator updateBookValidator;
 
     @GetMapping("/formNewBook")
 	public String formNewBook(Model model) throws IOException {
@@ -135,7 +142,6 @@ public class BookController {
         this.bookService.removeBook(this.bookService.getBookById(id));
         return "redirect:/home";
     }
-    
 
     @GetMapping("/book/{id}")
     public String getBook(@PathVariable("id") Long id, Model model) {
@@ -168,6 +174,47 @@ public class BookController {
         redirectAttributes.addAttribute("notFound", true);
         return "redirect:/home";
     }
+
+    @GetMapping("/{id}/updateBook")
+    public String getUpdateBook(@PathVariable("id") Long bookId, Model model) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+        }
+
+        model.addAttribute("updateBookForm", new UpdateBook());
+        model.addAttribute("book", this.bookService.getBookById(bookId));
+
+        return "updateFormBook.html";
+    }
+
+    @PostMapping("/{id}/updateBookSuccessful")
+    public String postUpdateBook(@PathVariable("id") Long bookId, @Valid @ModelAttribute("updateBookForm") UpdateBook updateBook, BindingResult bindingResult, Model model) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+        }
+
+        Book book = this.bookService.getBookById(bookId);
+        updateBook.setId(bookId);
+
+        this.updateBookValidator.validate(updateBook, bindingResult);
+
+        if(!bindingResult.hasErrors()) {
+            book.setCode(updateBook.getCode());
+            book.setTitle(updateBook.getTitle());
+            book.setYear_publication(updateBook.getYear_publication());
+            this.bookService.updateBook(book, bookId);
+            return "redirect:/book/" + bookId;
+        }
+        
+        model.addAttribute("book", book);
+        return "updateFormBook.html";
+    }
+    
+    
     
 
 }

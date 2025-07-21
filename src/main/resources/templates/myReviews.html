@@ -41,6 +41,15 @@
                         </span>
                     </div>
 
+                    <div class="position-absolute top-0 end-0 m-2"
+                                th:if="${user != null and user.role == 'ADMIN'}">
+                        <form th:action="@{'/book/' + ${review.book.id} + '/' + ${review.id} +'/removeReview'}"
+                                    method="POST">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Rimuovi
+                                        recensione</button>
+                         </form>
+                    </div>
+
                     <p class="text-muted m-0">
                         Libro: <a th:href="@{'/book/' + ${review.book.id}}" th:text="${review.book.title}"
                             class="text-decoration-none"></a>

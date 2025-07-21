@@ -62,5 +62,14 @@ public class BookService {
     public Book getBookByCode(Long code) {
         return this.bookRepository.findByCode(code);
     }
+
+    public Book updateBook(Book book, Long id) {
+        book.setId(id);
+        return this.bookRepository.save(book);
+    }
+
+    public Book getBookByTitle(String title) {
+        return this.bookRepository.findByTitle(title);
+    }
     
 }

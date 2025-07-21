@@ -1,3 +1,6 @@
+* [F-20/07/2025]:
+    - Implementata logica per modificare i dati di un libro.
+
 * [F-20/07/2025]: UserController.java : 
     - Nuovo fix per il cambio password/ruolo utente
 

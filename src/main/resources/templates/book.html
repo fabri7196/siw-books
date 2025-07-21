@@ -73,6 +73,9 @@
             <!-- Info Libro -->
             <div class="text-center">
                 <h2 class="fw-bold" th:text="${book.title}">Titolo Libro</h2>
+                <a th:if="${user != null and user.role == 'ADMIN'}"
+                        th:href="@{'/' + ${book.id} + '/updateBook'}" class="ms-2 text-decoration-none"
+                        style="color:black; font-size: x-small;">modifica</a>
                 <p class="text-muted mb-1" th:text="'Anno pubblicazione: ' + ${book.year_publication}"></p>
                 <p class="text-muted mb-1" th:text="'Codice: ' + ${book.code}"></p>
                 <p class="text-muted mb-3">Autori:
