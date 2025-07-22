@@ -23,6 +23,11 @@
                     style="width: 180px; height: 180px; object-fit: cover; border: 3px solid #ddd;" />
             </div>
 
+            <div th:if="${user != null and user.role == 'ADMIN'}" class="d-flex justify-content-center mb-3">
+                <a th:href="@{'/' + ${author.id} + '/updateAuthor'}" class="text-decoration-none"
+                    style="color:black; font-size: x-small;">modifica</a>
+            </div>
+
             <!-- Info Autore -->
             <div class="text-center">
                 <h2 class="fw-bold" th:text="${author.name} + ' ' + ${author.surname}">Nome Cognome</h2>

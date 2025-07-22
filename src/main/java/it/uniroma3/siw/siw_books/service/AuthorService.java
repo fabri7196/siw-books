@@ -46,4 +46,9 @@ public class AuthorService {
         
         return list;
     }
+
+    public Author updateAuthor(Author author, Long id) {
+        author.setId(id);
+        return this.authorRepository.save(author);
+    }
 }

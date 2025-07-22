@@ -30,6 +30,8 @@ import it.uniroma3.siw.siw_books.service.BookService;
 import it.uniroma3.siw.siw_books.service.CredentialsService;
 import it.uniroma3.siw.siw_books.storage.StorageProperties;
 import it.uniroma3.siw.siw_books.controller.validator.AuthorValidator;
+import it.uniroma3.siw.siw_books.controller.validator.UpdateAuthorValidator;
+import it.uniroma3.siw.siw_books.dto.UpdateAuthor;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,6 +65,9 @@ public class AuthorController {
 
     @Autowired
     private StorageProperties storageProperties;
+
+    @Autowired
+    private UpdateAuthorValidator updateAuthorValidator;
 
     @GetMapping("/authors")
     public String getAuthors(@RequestParam(name = "notFound", required = false) Boolean notFound, Model model) {
@@ -226,6 +231,50 @@ public class AuthorController {
 
         redirectAttributes.addAttribute("notFound", true);
         return "redirect:/authors";
+    }
+
+    @GetMapping("/{id}/updateAuthor")
+    public String getUpdateAuthor(@PathVariable("id") Long authorId, Model model) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+        }
+
+        model.addAttribute("updateAuthor", new UpdateAuthor());
+        model.addAttribute("author", this.authorService.getAuthorById(authorId));
+
+        return "updateFormAuthor.html";
+    }
+
+    @PostMapping("/{id}/updateAuthorSuccessful")
+    public String postUpdateAuthor(@PathVariable("id") Long authorId, @Valid @ModelAttribute("updateAuthor") UpdateAuthor updateAuthor, BindingResult bindingResult, Model model) {
+        UserDetails userDetails = globalController.getUser();
+        if (userDetails != null) {
+            Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+            model.addAttribute("user", credentials);
+        }
+
+        Author author = this.authorService.getAuthorById(authorId);
+        updateAuthor.setId(authorId);
+
+        this.updateAuthorValidator.validate(updateAuthor, bindingResult);
+
+        if(!bindingResult.hasErrors()) {
+            author.setDateOfBirth(updateAuthor.getDateOfBirth());
+            author.setName(updateAuthor.getName());
+            author.setSurname(updateAuthor.getSurname());
+            author.setNationality(updateAuthor.getNationality());
+            
+            if(updateAuthor.getDateOfDeath() != null) {
+                author.setDateOfDeath(updateAuthor.getDateOfDeath());
+            }
+            this.authorService.updateAuthor(author, authorId);
+            return "redirect:/author/" + authorId;
+        }
+        
+        model.addAttribute("author", author);
+        return "updateFormAuthor.html";
     }
 
 }

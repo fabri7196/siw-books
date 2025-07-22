@@ -1,4 +1,7 @@
-* [F-20/07/2025]:
+* [F-22/07/2025]:
+    - Implementata logica per modificare i dati di un autore.
+
+* [F-21/07/2025]:
     - Implementata logica per modificare i dati di un libro.
 
 * [F-20/07/2025]: UserController.java : 
