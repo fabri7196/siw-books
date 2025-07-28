@@ -37,6 +37,7 @@
                         <div class="d-flex align-items-center justify-content-center">
                             <a th:href="@{'/author/' + ${author.id}}" class="btn btn-xl"
                                 th:text="${author.name} + ' ' + ${author.surname}"></a>
+                            <!-- <p th:text="${author.books.size()}"></p> --> 
                         </div>
                         <div class="d-flex justify-content-center">
                             <form th:if="${user != null and user.role == 'ADMIN' and requestURI == '/authors'}"
